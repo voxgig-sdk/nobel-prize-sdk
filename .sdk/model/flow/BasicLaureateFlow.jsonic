@@ -1,0 +1,22 @@
+# BasicLaureateFlow
+
+main: kit: flow: BasicLaureateFlow:
+{
+  entity: "laureate",
+  kind: "basic",
+  name: "BasicLaureateFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "laureate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLaureateFlow"
+}

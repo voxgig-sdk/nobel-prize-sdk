@@ -1,0 +1,174 @@
+# Entity: laureate
+
+main: kit: entity: laureate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "born"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "born_city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "born_country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "born_country_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "died"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "died_city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "died_country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "died_country_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "firstname"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gender"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "priz"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "surname"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "laureate"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "born_city"
+                orig: "born_city"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "born_country"
+                orig: "born_country"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "died_city"
+                orig: "died_city"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "died_country"
+                orig: "died_country"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "firstname"
+                orig: "firstname"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "gender"
+                orig: "gender"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "id"
+                orig: "id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "surname"
+                orig: "surname"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/laureate.json"
+          parts: [
+            "laureate.json"
+          ]
+          select: {
+            exist: [
+              "born_city"
+              "born_country"
+              "died_city"
+              "died_country"
+              "firstname"
+              "gender"
+              "id"
+              "surname"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

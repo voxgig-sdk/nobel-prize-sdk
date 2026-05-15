@@ -1,0 +1,22 @@
+# BasicPrizFlow
+
+main: kit: flow: BasicPrizFlow:
+{
+  entity: "priz",
+  kind: "basic",
+  name: "BasicPrizFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "priz_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPrizFlow"
+}

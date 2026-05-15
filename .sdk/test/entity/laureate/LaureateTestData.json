@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "laureate": {
+      "LAUREATE00": {
+        "born": "s82",
+        "born_city": "s83",
+        "born_country": "s84",
+        "born_country_code": "s85",
+        "died": "s86",
+        "died_city": "s87",
+        "died_country": "s88",
+        "died_country_code": "s89",
+        "firstname": "s8a",
+        "gender": "s8b",
+        "id": "LAUREATE00",
+        "priz": [],
+        "surname": "s8e"
+      },
+      "LAUREATE01": {
+        "born": "s104",
+        "born_city": "s105",
+        "born_country": "s106",
+        "born_country_code": "s107",
+        "died": "s108",
+        "died_city": "s109",
+        "died_country": "s10a",
+        "died_country_code": "s10b",
+        "firstname": "s10c",
+        "gender": "s10d",
+        "id": "LAUREATE01",
+        "priz": [],
+        "surname": "s110"
+      },
+      "LAUREATE02": {
+        "born": "s186",
+        "born_city": "s187",
+        "born_country": "s188",
+        "born_country_code": "s189",
+        "died": "s18a",
+        "died_city": "s18b",
+        "died_country": "s18c",
+        "died_country_code": "s18d",
+        "firstname": "s18e",
+        "gender": "s18f",
+        "id": "LAUREATE02",
+        "priz": [],
+        "surname": "s192"
+      }
+    }
+  },
+  "new": {
+    "laureate": {
+      "laureate_ref01": {
+        "born": "s208",
+        "born_city": "s209",
+        "born_country": "s20a",
+        "born_country_code": "s20b",
+        "died": "s20c",
+        "died_city": "s20d",
+        "died_country": "s20e",
+        "died_country_code": "s20f",
+        "firstname": "s210",
+        "gender": "s211",
+        "priz": [],
+        "surname": "s214"
+      }
+    }
+  }
+}

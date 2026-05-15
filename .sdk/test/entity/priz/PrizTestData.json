@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "priz": {
+      "PRIZ00": {
+        "category": "s28",
+        "laureate": [],
+        "overall_motivation": "s2a",
+        "year": "s2b"
+      },
+      "PRIZ01": {
+        "category": "s50",
+        "laureate": [],
+        "overall_motivation": "s52",
+        "year": "s53"
+      },
+      "PRIZ02": {
+        "category": "s78",
+        "laureate": [],
+        "overall_motivation": "s7a",
+        "year": "s7b"
+      }
+    }
+  },
+  "new": {
+    "priz": {
+      "priz_ref01": {
+        "category": "sa0",
+        "laureate": [],
+        "overall_motivation": "sa2",
+        "year": "sa3"
+      }
+    }
+  }
+}

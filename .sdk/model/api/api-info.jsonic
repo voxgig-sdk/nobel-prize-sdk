@@ -1,0 +1,33 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Nobel Prize API"
+        url: "https://www.nobelprize.org/organization/developer-zone-2/"
+      }
+      description: "Provides information about Nobel Prizes and Laureates. Offers endpoints to list and search data, returning results in JSON or CSV format. Updated regularly and versioned to prevent breaking changes."
+      license: {
+        name: "Nobel Prize API License"
+        url: "https://www.nobelprize.org/organization/developer-zone-2/"
+      }
+      servers: [
+        {
+          description: "Production API Server (v1)"
+          url: "https://api.nobelprize.org/v1"
+        }
+        {
+          description: "Production API Server (v2.1)"
+          url: "https://api.nobelprize.org/2.1"
+        }
+      ]
+      termsOfService: "https://www.nobelprize.org/organization/developer-zone-2/"
+      title: "Nobel Prize API"
+      version: "2.1"
+    }
+  }
+}
+
+}

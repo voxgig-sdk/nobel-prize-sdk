@@ -1,0 +1,401 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Nobel Prize API",
+    "description": "Provides information about Nobel Prizes and Laureates. Offers endpoints to list and search data, returning results in JSON or CSV format. Updated regularly and versioned to prevent breaking changes.",
+    "version": "2.1",
+    "contact": {
+      "name": "Nobel Prize API",
+      "url": "https://www.nobelprize.org/organization/developer-zone-2/"
+    },
+    "termsOfService": "https://www.nobelprize.org/organization/developer-zone-2/",
+    "license": {
+      "name": "Nobel Prize API License",
+      "url": "https://www.nobelprize.org/organization/developer-zone-2/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.nobelprize.org/v1",
+      "description": "Production API Server (v1)"
+    },
+    {
+      "url": "https://api.nobelprize.org/2.1",
+      "description": "Production API Server (v2.1)"
+    }
+  ],
+  "paths": {
+    "/prize.json": {
+      "get": {
+        "summary": "Get Nobel Prizes",
+        "description": "Returns information about Nobel Prizes. Can be filtered by year, category, and other parameters.",
+        "operationId": "getPrizes",
+        "tags": [
+          "Prizes"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Filter prizes by year (e.g., 2020)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1901
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter prizes by category",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "physics",
+                "chemistry",
+                "medicine",
+                "literature",
+                "peace",
+                "economics"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with prize data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "prizes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "year": {
+                            "type": "string",
+                            "description": "Year the prize was awarded"
+                          },
+                          "category": {
+                            "type": "string",
+                            "description": "Category of the Nobel Prize"
+                          },
+                          "laureates": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "Laureate ID"
+                                },
+                                "firstname": {
+                                  "type": "string",
+                                  "description": "First name of the laureate"
+                                },
+                                "surname": {
+                                  "type": "string",
+                                  "description": "Surname of the laureate"
+                                },
+                                "motivation": {
+                                  "type": "string",
+                                  "description": "Motivation for the award"
+                                },
+                                "share": {
+                                  "type": "string",
+                                  "description": "Share of the prize"
+                                }
+                              }
+                            }
+                          },
+                          "overallMotivation": {
+                            "type": "string",
+                            "description": "Overall motivation for the prize"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "prizes": [
+                    {
+                      "year": "2020",
+                      "category": "physics",
+                      "laureates": [
+                        {
+                          "id": "988",
+                          "firstname": "Roger",
+                          "surname": "Penrose",
+                          "motivation": "for the discovery that black hole formation is a robust prediction of the general theory of relativity",
+                          "share": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/laureate.json": {
+      "get": {
+        "summary": "Get Nobel Laureates",
+        "description": "Returns information about Nobel Prize laureates. Can be filtered by ID, name, gender, birth/death country, and other parameters.",
+        "operationId": "getLaureates",
+        "tags": [
+          "Laureates"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Filter laureates by ID",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "firstname",
+            "in": "query",
+            "description": "Filter laureates by first name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "surname",
+            "in": "query",
+            "description": "Filter laureates by surname",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Filter laureates by gender",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "male",
+                "female",
+                "org"
+              ]
+            }
+          },
+          {
+            "name": "bornCountry",
+            "in": "query",
+            "description": "Filter laureates by birth country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diedCountry",
+            "in": "query",
+            "description": "Filter laureates by country of death",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bornCity",
+            "in": "query",
+            "description": "Filter laureates by birth city",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diedCity",
+            "in": "query",
+            "description": "Filter laureates by city of death",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with laureate data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "laureates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Laureate ID"
+                          },
+                          "firstname": {
+                            "type": "string",
+                            "description": "First name of the laureate"
+                          },
+                          "surname": {
+                            "type": "string",
+                            "description": "Surname of the laureate"
+                          },
+                          "born": {
+                            "type": "string",
+                            "description": "Birth date"
+                          },
+                          "died": {
+                            "type": "string",
+                            "description": "Death date"
+                          },
+                          "bornCountry": {
+                            "type": "string",
+                            "description": "Country of birth"
+                          },
+                          "bornCountryCode": {
+                            "type": "string",
+                            "description": "Country code of birth country"
+                          },
+                          "bornCity": {
+                            "type": "string",
+                            "description": "City of birth"
+                          },
+                          "diedCountry": {
+                            "type": "string",
+                            "description": "Country of death"
+                          },
+                          "diedCountryCode": {
+                            "type": "string",
+                            "description": "Country code of death country"
+                          },
+                          "diedCity": {
+                            "type": "string",
+                            "description": "City of death"
+                          },
+                          "gender": {
+                            "type": "string",
+                            "description": "Gender of the laureate"
+                          },
+                          "prizes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "year": {
+                                  "type": "string",
+                                  "description": "Year the prize was awarded"
+                                },
+                                "category": {
+                                  "type": "string",
+                                  "description": "Category of the Nobel Prize"
+                                },
+                                "motivation": {
+                                  "type": "string",
+                                  "description": "Motivation for the award"
+                                },
+                                "share": {
+                                  "type": "string",
+                                  "description": "Share of the prize"
+                                },
+                                "affiliations": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "description": "Name of the affiliation"
+                                      },
+                                      "city": {
+                                        "type": "string",
+                                        "description": "City of the affiliation"
+                                      },
+                                      "country": {
+                                        "type": "string",
+                                        "description": "Country of the affiliation"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "laureates": [
+                    {
+                      "id": "988",
+                      "firstname": "Roger",
+                      "surname": "Penrose",
+                      "born": "1931-08-08",
+                      "bornCountry": "United Kingdom",
+                      "bornCountryCode": "GB",
+                      "bornCity": "Colchester",
+                      "gender": "male",
+                      "prizes": [
+                        {
+                          "year": "2020",
+                          "category": "physics",
+                          "motivation": "for the discovery that black hole formation is a robust prediction of the general theory of relativity",
+                          "share": "2",
+                          "affiliations": [
+                            {
+                              "name": "University of Oxford",
+                              "city": "Oxford",
+                              "country": "United Kingdom"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Prizes",
+      "description": "Operations related to Nobel Prizes"
+    },
+    {
+      "name": "Laureates",
+      "description": "Operations related to Nobel Prize laureates"
+    }
+  ]
+}
