@@ -1,10 +1,10 @@
 package voxgignobelprizesdk
 
 import (
-	"github.com/voxgig-sdk/nobel-prize-sdk/core"
-	"github.com/voxgig-sdk/nobel-prize-sdk/entity"
-	"github.com/voxgig-sdk/nobel-prize-sdk/feature"
-	_ "github.com/voxgig-sdk/nobel-prize-sdk/utility"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/entity"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/feature"
+	_ "github.com/voxgig-sdk/nobel-prize-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

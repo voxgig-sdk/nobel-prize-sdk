@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/nobel-prize-sdk/core"
+import "github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name

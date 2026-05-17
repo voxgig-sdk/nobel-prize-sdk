@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/nobel-prize-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/nobel-prize-sdk/core"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 )
 
 func makeFetchDefUtil(ctx *core.Context) (map[string]any, error) {

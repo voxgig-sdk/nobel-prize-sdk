@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/nobel-prize-sdk/core"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 )
 
 type BaseFeature struct {

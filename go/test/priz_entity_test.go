@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/nobel-prize-sdk"
-	"github.com/voxgig-sdk/nobel-prize-sdk/core"
+	sdk "github.com/voxgig-sdk/nobel-prize-sdk/go"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/nobel-prize-sdk/go/utility/struct"
 )
 
 func TestPrizEntity(t *testing.T) {

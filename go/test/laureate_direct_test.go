@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/nobel-prize-sdk"
-	"github.com/voxgig-sdk/nobel-prize-sdk/core"
+	sdk "github.com/voxgig-sdk/nobel-prize-sdk/go"
+	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 )
 
 func TestLaureateDirect(t *testing.T) {
