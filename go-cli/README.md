@@ -37,7 +37,7 @@ go build -o nobel-prize-cli ./...
 
 ## Entities
 
-laureate priz
+laureate prize
 
 ## REPL commands
 

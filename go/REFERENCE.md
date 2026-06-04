@@ -44,9 +44,9 @@ client := sdk.TestSDK(nil, nil)
 
 Create a new `Laureate` entity instance. Pass `nil` for no initial data.
 
-#### `Priz(data map[string]any) NobelPrizeEntity`
+#### `Prize(data map[string]any) NobelPrizeEntity`
 
-Create a new `Priz` entity instance. Pass `nil` for no initial data.
+Create a new `Prize` entity instance. Pass `nil` for no initial data.
 
 #### `OptionsMap() map[string]any`
 
@@ -105,7 +105,7 @@ laureate := client.Laureate(nil)
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -142,10 +142,10 @@ Return the entity name.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```go
-priz := client.Priz(nil)
+prize := client.Prize(nil)
 ```
 
 ### Fields
@@ -164,7 +164,7 @@ priz := client.Priz(nil)
 List entities matching the given criteria. Returns an array.
 
 ```go
-results, err := client.Priz(nil).List(nil, nil)
+results, err := client.Prize(nil).List(nil, nil)
 ```
 
 ### Common Methods
@@ -181,7 +181,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `PrizEntity` instance with the same client and
+Create a new `PrizeEntity` instance with the same client and
 options.
 
 #### `GetName() string`

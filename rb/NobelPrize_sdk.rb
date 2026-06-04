@@ -205,9 +205,9 @@ class NobelPrizeSDK
   end
 
 
-  def Priz(data = nil)
-    require_relative 'entity/priz_entity'
-    PrizEntity.new(self, data)
+  def Prize(data = nil)
+    require_relative 'entity/prize_entity'
+    PrizeEntity.new(self, data)
   end
 
 

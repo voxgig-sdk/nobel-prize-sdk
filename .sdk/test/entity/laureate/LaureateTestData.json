@@ -13,7 +13,7 @@
         "firstname": "s8a",
         "gender": "s8b",
         "id": "LAUREATE00",
-        "priz": [],
+        "prize": [],
         "surname": "s8e"
       },
       "LAUREATE01": {
@@ -28,7 +28,7 @@
         "firstname": "s10c",
         "gender": "s10d",
         "id": "LAUREATE01",
-        "priz": [],
+        "prize": [],
         "surname": "s110"
       },
       "LAUREATE02": {
@@ -43,7 +43,7 @@
         "firstname": "s18e",
         "gender": "s18f",
         "id": "LAUREATE02",
-        "priz": [],
+        "prize": [],
         "surname": "s192"
       }
     }
@@ -61,7 +61,7 @@
         "died_country_code": "s20f",
         "firstname": "s210",
         "gender": "s211",
-        "priz": [],
+        "prize": [],
         "surname": "s214"
       }
     }

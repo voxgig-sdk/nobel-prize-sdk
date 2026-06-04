@@ -250,8 +250,8 @@ func (sdk *NobelPrizeSDK) Laureate(data map[string]any) NobelPrizeEntity {
 }
 
 
-func (sdk *NobelPrizeSDK) Priz(data map[string]any) NobelPrizeEntity {
-	return NewPrizEntityFunc(sdk, data)
+func (sdk *NobelPrizeSDK) Prize(data map[string]any) NobelPrizeEntity {
+	return NewPrizeEntityFunc(sdk, data)
 }
 
 

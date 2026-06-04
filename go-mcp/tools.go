@@ -16,7 +16,7 @@ import (
 // reqdata map passed through to the SDK. For load, `query` should be
 // `{"id": <value>}`. For list, omit `query` or pass an empty map.
 type Args struct {
-	Entity string         `json:"entity" jsonschema:"laureate | priz"`
+	Entity string         `json:"entity" jsonschema:"laureate | prize"`
 	Query  map[string]any `json:"query,omitempty" jsonschema:"optional match map e.g. {\"id\":1} for load, omit for list"`
 }
 
@@ -79,8 +79,8 @@ func entityFor(client *sdk.NobelPrizeSDK, name string) (sdk.NobelPrizeEntity, er
 	switch strings.ToLower(name) {
 	case "laureate":
 		return client.Laureate(nil), nil
-	case "priz":
-		return client.Priz(nil), nil
+	case "prize":
+		return client.Prize(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

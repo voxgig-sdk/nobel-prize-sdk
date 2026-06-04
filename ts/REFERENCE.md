@@ -61,9 +61,9 @@ Create a new `Laureate` entity instance.
 
 **Returns:** `LaureateEntity` instance.
 
-#### `Priz(data?: object)`
+#### `Prize(data?: object)`
 
-Create a new `Priz` entity instance.
+Create a new `Prize` entity instance.
 
 **Parameters:**
 
@@ -71,7 +71,7 @@ Create a new `Priz` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `PrizEntity` instance.
+**Returns:** `PrizeEntity` instance.
 
 #### `options()`
 
@@ -140,7 +140,7 @@ const laureate = client.Laureate()
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -181,10 +181,10 @@ Return a copy of the entity options.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```ts
-const priz = client.Priz()
+const prize = client.Prize()
 ```
 
 ### Fields
@@ -203,7 +203,7 @@ const priz = client.Priz()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Priz().list()
+const results = await client.Prize().list()
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `PrizEntity` instance with the same client and
+Create a new `PrizeEntity` instance with the same client and
 options.
 
 #### `client()`

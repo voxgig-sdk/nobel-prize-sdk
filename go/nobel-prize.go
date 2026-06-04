@@ -35,8 +35,8 @@ func init() {
 	core.NewLaureateEntityFunc = func(client *core.NobelPrizeSDK, entopts map[string]any) core.NobelPrizeEntity {
 		return entity.NewLaureateEntity(client, entopts)
 	}
-	core.NewPrizEntityFunc = func(client *core.NobelPrizeSDK, entopts map[string]any) core.NobelPrizeEntity {
-		return entity.NewPrizEntity(client, entopts)
+	core.NewPrizeEntityFunc = func(client *core.NobelPrizeSDK, entopts map[string]any) core.NobelPrizeEntity {
+		return entity.NewPrizeEntity(client, entopts)
 	}
 }
 

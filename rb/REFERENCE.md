@@ -46,9 +46,9 @@ client = NobelPrizeSDK.test
 
 Create a new `Laureate` entity instance. Pass `nil` for no initial data.
 
-#### `Priz(data = nil)`
+#### `Prize(data = nil)`
 
-Create a new `Priz` entity instance. Pass `nil` for no initial data.
+Create a new `Prize` entity instance. Pass `nil` for no initial data.
 
 #### `options_map -> Hash`
 
@@ -107,7 +107,7 @@ laureate = client.Laureate
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -150,10 +150,10 @@ Return the entity name.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```ruby
-priz = client.Priz
+prize = client.Prize
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ priz = client.Priz
 List entities matching the given criteria. Returns an array.
 
 ```ruby
-results, err = client.Priz.list(nil)
+results, err = client.Prize.list(nil)
 ```
 
 ### Common Methods
@@ -195,7 +195,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `PrizEntity` instance with the same client and
+Create a new `PrizeEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

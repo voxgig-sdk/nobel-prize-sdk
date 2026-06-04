@@ -88,8 +88,8 @@ func entityFor(client *sdk.NobelPrizeSDK, name string) (sdk.NobelPrizeEntity, er
 	switch strings.ToLower(name) {
 	case "laureate":
 		return client.Laureate(nil), nil
-	case "priz":
-		return client.Priz(nil), nil
+	case "prize":
+		return client.Prize(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

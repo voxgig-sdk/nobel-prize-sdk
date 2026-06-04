@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from nobelprize_sdk import NobelPrizeSDK
 
-client = NobelPrizeSDK({
-    "apikey": os.environ.get("NOBEL-PRIZE_APIKEY"),
-})
+client = NobelPrizeSDK({})
 ```
 
 ### 2. List laureates
@@ -121,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOBEL-PRIZE_TEST_LIVE=TRUE
-NOBEL-PRIZE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -170,7 +165,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
 | `Laureate` | `(data) -> LaureateEntity` | Create a Laureate entity instance. |
-| `Priz` | `(data) -> PrizEntity` | Create a Priz entity instance. |
+| `Prize` | `(data) -> PrizeEntity` | Create a Prize entity instance. |
 
 ### Entity interface
 
@@ -221,14 +216,14 @@ On error, `ok` is `False` and `err` contains the error value.
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `priz` |  |
+| `prize` |  |
 | `surname` |  |
 
 Operations: List.
 
 API path: `/laureate.json`
 
-#### Priz
+#### Prize
 
 | Field | Description |
 | --- | --- |
@@ -271,7 +266,7 @@ Create an instance: `const laureate = client.Laureate()`
 | `firstname` | ``$STRING`` |  |
 | `gender` | ``$STRING`` |  |
 | `id` | ``$STRING`` |  |
-| `priz` | ``$ARRAY`` |  |
+| `prize` | ``$ARRAY`` |  |
 | `surname` | ``$STRING`` |  |
 
 #### Example: List
@@ -281,9 +276,9 @@ const laureates = await client.Laureate().list()
 ```
 
 
-### Priz
+### Prize
 
-Create an instance: `const priz = client.Priz()`
+Create an instance: `const prize = client.Prize()`
 
 #### Operations
 
@@ -303,7 +298,7 @@ Create an instance: `const priz = client.Priz()`
 #### Example: List
 
 ```ts
-const prizs = await client.Priz().list()
+const prizes = await client.Prize().list()
 ```
 
 

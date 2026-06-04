@@ -218,9 +218,9 @@ class NobelPrizeSDK:
         return LaureateEntity(self, data)
 
 
-    def Priz(self, data=None):
-        from entity.priz_entity import PrizEntity
-        return PrizEntity(self, data)
+    def Prize(self, data=None):
+        from entity.prize_entity import PrizeEntity
+        return PrizeEntity(self, data)
 
 
 

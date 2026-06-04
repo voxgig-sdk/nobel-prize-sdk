@@ -11,7 +11,7 @@ guide: {
     }
   }
 
-  entity: priz: {
+  entity: prize: {
     path: "/prize.json": {
       op: list: method: *GET
     }

@@ -61,7 +61,7 @@ main: kit: entity: laureate: {
       type: "`$STRING`"
     }
     {
-      name: "priz"
+      name: "prize"
       req: false
       type: "`$ARRAY`"
     }

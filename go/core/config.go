@@ -14,15 +14,12 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://api.nobelprize.org/v1",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
 			"entity": map[string]any{
 				"laureate": map[string]any{},
-				"priz": map[string]any{},
+				"prize": map[string]any{},
 			},
 		},
 		"entity": map[string]any{
@@ -106,7 +103,7 @@ func MakeConfig() map[string]any {
 						"index$": 10,
 					},
 					map[string]any{
-						"name": "priz",
+						"name": "prize",
 						"req": false,
 						"type": "`$ARRAY`",
 						"active": true,
@@ -227,7 +224,7 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"priz": map[string]any{
+			"prize": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "category",
@@ -258,7 +255,7 @@ func MakeConfig() map[string]any {
 						"index$": 3,
 					},
 				},
-				"name": "priz",
+				"name": "prize",
 				"op": map[string]any{
 					"list": map[string]any{
 						"name": "list",

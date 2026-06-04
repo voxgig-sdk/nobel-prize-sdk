@@ -8,5 +8,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewLaureateEntityFunc func(client *NobelPrizeSDK, entopts map[string]any) NobelPrizeEntity
 
-var NewPrizEntityFunc func(client *NobelPrizeSDK, entopts map[string]any) NobelPrizeEntity
+var NewPrizeEntityFunc func(client *NobelPrizeSDK, entopts map[string]any) NobelPrizeEntity
 

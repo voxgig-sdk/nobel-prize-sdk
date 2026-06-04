@@ -20,15 +20,12 @@ class NobelPrizeConfig
             ],
             "options" => [
                 "base" => "https://api.nobelprize.org/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
                 "entity" => [
                     "laureate" => [],
-                    "priz" => [],
+                    "prize" => [],
                 ],
             ],
             "entity" => [
@@ -112,7 +109,7 @@ class NobelPrizeConfig
               'index$' => 10,
             ],
             [
-              'name' => 'priz',
+              'name' => 'prize',
               'req' => false,
               'type' => '`$ARRAY`',
               'active' => true,
@@ -233,7 +230,7 @@ class NobelPrizeConfig
             'ancestors' => [],
           ],
         ],
-        'priz' => [
+        'prize' => [
           'fields' => [
             [
               'name' => 'category',
@@ -264,7 +261,7 @@ class NobelPrizeConfig
               'index$' => 3,
             ],
           ],
-          'name' => 'priz',
+          'name' => 'prize',
           'op' => [
             'list' => [
               'name' => 'list',

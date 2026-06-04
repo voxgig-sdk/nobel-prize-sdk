@@ -230,10 +230,10 @@ class NobelPrizeSDK
     }
 
 
-    public function Priz($data = null)
+    public function Prize($data = null)
     {
-        require_once __DIR__ . '/entity/priz_entity.php';
-        return new PrizEntity($this, $data);
+        require_once __DIR__ . '/entity/prize_entity.php';
+        return new PrizeEntity($this, $data);
     }
 
 

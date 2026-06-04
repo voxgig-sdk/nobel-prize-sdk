@@ -46,9 +46,9 @@ client = NobelPrizeSDK.test()
 
 Create a new `LaureateEntity` instance. Pass `None` for no initial data.
 
-#### `Priz(data=None)`
+#### `Prize(data=None)`
 
-Create a new `PrizEntity` instance. Pass `None` for no initial data.
+Create a new `PrizeEntity` instance. Pass `None` for no initial data.
 
 #### `options_map() -> dict`
 
@@ -103,7 +103,7 @@ laureate = client.Laureate()
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -145,10 +145,10 @@ Return the entity name.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```python
-priz = client.Priz()
+prize = client.Prize()
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ priz = client.Priz()
 List entities matching the given criteria. Returns an array.
 
 ```python
-results, err = client.Priz().list({})
+results, err = client.Prize().list({})
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `PrizEntity` instance with the same options.
+Create a new `PrizeEntity` instance with the same options.
 
 #### `get_name() -> str`
 

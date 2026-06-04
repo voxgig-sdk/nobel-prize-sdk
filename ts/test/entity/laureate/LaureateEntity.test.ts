@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'NOBEL_PRIZE_TEST_LAUREATE_ENTID': idmap,
     'NOBEL_PRIZE_TEST_LIVE': 'FALSE',
     'NOBEL_PRIZE_TEST_EXPLAIN': 'FALSE',
-    'NOBEL_PRIZE_APIKEY': 'NONE',
   })
 
   idmap = env['NOBEL_PRIZE_TEST_LAUREATE_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new NobelPrizeSDK(merge([
       {
-        apikey: env.NOBEL_PRIZE_APIKEY,
       },
       extra
     ]))

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.nobelprize.org/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -51,7 +47,7 @@ class Config {
       laureate: {
       },
 
-      priz: {
+      prize: {
       },
 
     }
@@ -139,7 +135,7 @@ class Config {
           "index$": 10
         },
         {
-          "name": "priz",
+          "name": "prize",
           "req": false,
           "type": "`$ARRAY`",
           "active": true,
@@ -260,7 +256,7 @@ class Config {
         "ancestors": []
       }
     },
-    "priz": {
+    "prize": {
       "fields": [
         {
           "name": "category",
@@ -291,7 +287,7 @@ class Config {
           "index$": 3
         }
       ],
-      "name": "priz",
+      "name": "prize",
       "op": {
         "list": {
           "name": "list",

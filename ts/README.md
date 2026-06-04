@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { NobelPrizeSDK } from 'nobel-prize'
 
-const client = new NobelPrizeSDK({
-  apikey: process.env.NOBEL-PRIZE_APIKEY,
-})
+const client = new NobelPrizeSDK({})
 ```
 
 ### 2. List laureates
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NobelPrizeSDK({ apikey: '...' })
+const client = new NobelPrizeSDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new NobelPrizeSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOBEL-PRIZE_TEST_LIVE=TRUE
-NOBEL-PRIZE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new NobelPrizeSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new NobelPrizeSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -176,7 +170,7 @@ new NobelPrizeSDK(options?: {
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Laureate(data?)` | `LaureateEntity` | Create a Laureate entity instance. |
-| `Priz(data?)` | `PrizEntity` | Create a Priz entity instance. |
+| `Prize(data?)` | `PrizeEntity` | Create a Prize entity instance. |
 | `tester(testopts?, sdkopts?)` | `NobelPrizeSDK` | Create a test-mode client instance. |
 
 #### Static methods
@@ -262,14 +256,14 @@ The `prepare()` method returns:
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `priz` |  |
+| `prize` |  |
 | `surname` |  |
 
 Operations: list.
 
 API path: `/laureate.json`
 
-#### Priz
+#### Prize
 
 | Field | Description |
 | --- | --- |
@@ -312,7 +306,7 @@ Create an instance: `const laureate = client.Laureate()`
 | `firstname` | ``$STRING`` |  |
 | `gender` | ``$STRING`` |  |
 | `id` | ``$STRING`` |  |
-| `priz` | ``$ARRAY`` |  |
+| `prize` | ``$ARRAY`` |  |
 | `surname` | ``$STRING`` |  |
 
 #### Example: List
@@ -322,9 +316,9 @@ const laureates = await client.Laureate().list()
 ```
 
 
-### Priz
+### Prize
 
-Create an instance: `const priz = client.Priz()`
+Create an instance: `const prize = client.Prize()`
 
 #### Operations
 
@@ -344,7 +338,7 @@ Create an instance: `const priz = client.Priz()`
 #### Example: List
 
 ```ts
-const prizs = await client.Priz().list()
+const prizes = await client.Prize().list()
 ```
 
 

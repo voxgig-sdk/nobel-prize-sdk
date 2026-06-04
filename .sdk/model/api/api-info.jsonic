@@ -26,8 +26,27 @@ main: {
       termsOfService: "https://www.nobelprize.org/organization/developer-zone-2/"
       title: "Nobel Prize API"
       version: "2.1"
+      tagline: "Browse Nobel Prizes and the laureates who received them, from 1901 to the present"
+      homepage: "https://www.nobelprize.org/about/developer-zone-2/"
+      docs_url: "https://www.nobelprize.org/about/developer-zone-2/"
+      license_short: "Free to use under the Nobel Prize API terms of use; review terms before use."
+      license_md: `- Free to access; no API key or registration required.
+- Use is governed by the [Nobel Prize API terms of use](https://www.nobelprize.org/about/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/) — review before integrating.
+- The Nobel Foundation strongly encourages subscribing to their developer newsletter for change notifications.`
+      about_md: `The Nobel Prize API is published by the [Nobel Foundation](https://www.nobelprize.org/) and exposes data about the Nobel Prizes and the laureates who have received them, going back to the first awards in 1901.
+
+What you get from the API:
+
+- A list/search endpoint for **laureates** — the people and organisations awarded a Nobel Prize.
+- A list/search endpoint for **Nobel Prizes** themselves — one record per prize, linking back to the relevant laureates.
+- Responses available in JSON or CSV.
+
+The API does not require an API key. CORS is enabled on the laureates endpoint. This SDK targets the \`v1\` server (\`https://api.nobelprize.org/v1\`); the Foundation also publishes newer versions (2.0, 2.1) and a SPARQL-based Linked Data endpoint at \`data.nobelprize.org\` for more advanced querying.`
+      entity_desc: {
+        laureate: "A person or organisation awarded a Nobel Prize, exposed via the `/laureates` endpoint."
+        priz: "A Nobel Prize award record (category and year), exposed via the prize listing endpoint and linked to its laureates."
+      }
+      auth: false
     }
   }
-}
-
 }

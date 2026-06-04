@@ -1,7 +1,7 @@
 // NobelPrize Ts SDK
 
 import { LaureateEntity } from './entity/LaureateEntity'
-import { PrizEntity } from './entity/PrizEntity'
+import { PrizeEntity } from './entity/PrizeEntity'
 
 
 import { inspect } from 'node:util'
@@ -209,9 +209,9 @@ class NobelPrizeSDK {
   }
 
 
-  Priz(data?: any) {
+  Prize(data?: any) {
     const self = this
-    return new PrizEntity(self,data)
+    return new PrizeEntity(self,data)
   }
 
 

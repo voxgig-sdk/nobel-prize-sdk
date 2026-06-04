@@ -16,7 +16,7 @@ struct's `json` / `jsonschema` tags — no schema is hand-written.
 
 ## Entities
 
-laureate | priz
+laureate | prize
 
 ## Build
 

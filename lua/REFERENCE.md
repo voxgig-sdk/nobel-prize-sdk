@@ -45,9 +45,9 @@ local client = sdk.test(nil, nil)
 
 Create a new `Laureate` entity instance. Pass `nil` for no initial data.
 
-#### `Priz(data)`
+#### `Prize(data)`
 
-Create a new `Priz` entity instance. Pass `nil` for no initial data.
+Create a new `Prize` entity instance. Pass `nil` for no initial data.
 
 #### `options_map() -> table`
 
@@ -106,7 +106,7 @@ local laureate = client:Laureate(nil)
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -149,10 +149,10 @@ Return the entity name.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```lua
-local priz = client:Priz(nil)
+local prize = client:Prize(nil)
 ```
 
 ### Fields
@@ -171,7 +171,7 @@ local priz = client:Priz(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Priz(nil):list(nil, nil)
+local results, err = client:Prize(nil):list(nil, nil)
 ```
 
 ### Common Methods
@@ -194,7 +194,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `PrizEntity` instance with the same client and
+Create a new `PrizeEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/nobel-prize-sdk/go"
     "github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewNobelPrizeSDK(map[string]any{
-        "apikey": os.Getenv("NOBEL-PRIZE_APIKEY"),
-    })
+    client := sdk.NewNobelPrizeSDK(map[string]any{})
 ```
 
 ### 2. List laureates
@@ -140,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOBEL-PRIZE_TEST_LIVE=TRUE
-NOBEL-PRIZE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -162,7 +158,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |
@@ -187,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Laureate` | `(data map[string]any) NobelPrizeEntity` | Create a Laureate entity instance. |
-| `Priz` | `(data map[string]any) NobelPrizeEntity` | Create a Priz entity instance. |
+| `Prize` | `(data map[string]any) NobelPrizeEntity` | Create a Prize entity instance. |
 
 ### Entity interface (NobelPrizeEntity)
 
@@ -236,14 +231,14 @@ On error, `"ok"` is `false` and `"err"` contains the error value.
 | `"firstname"` |  |
 | `"gender"` |  |
 | `"id"` |  |
-| `"priz"` |  |
+| `"prize"` |  |
 | `"surname"` |  |
 
 Operations: List.
 
 API path: `/laureate.json`
 
-#### Priz
+#### Prize
 
 | Field | Description |
 | --- | --- |
@@ -286,7 +281,7 @@ Create an instance: `laureate := client.Laureate(nil)`
 | `firstname` | ``$STRING`` |  |
 | `gender` | ``$STRING`` |  |
 | `id` | ``$STRING`` |  |
-| `priz` | ``$ARRAY`` |  |
+| `prize` | ``$ARRAY`` |  |
 | `surname` | ``$STRING`` |  |
 
 #### Example: List
@@ -296,9 +291,9 @@ results, err := client.Laureate(nil).List(nil, nil)
 ```
 
 
-### Priz
+### Prize
 
-Create an instance: `priz := client.Priz(nil)`
+Create an instance: `prize := client.Prize(nil)`
 
 #### Operations
 
@@ -318,7 +313,7 @@ Create an instance: `priz := client.Priz(nil)`
 #### Example: List
 
 ```go
-results, err := client.Priz(nil).List(nil, nil)
+results, err := client.Prize(nil).List(nil, nil)
 ```
 
 

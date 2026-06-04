@@ -14,15 +14,12 @@ local function make_config()
     },
     options = {
       base = "https://api.nobelprize.org/v1",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
       entity = {
         ["laureate"] = {},
-        ["priz"] = {},
+        ["prize"] = {},
       },
     },
     entity = {
@@ -106,7 +103,7 @@ local function make_config()
             ["index$"] = 10,
           },
           {
-            ["name"] = "priz",
+            ["name"] = "prize",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["active"] = true,
@@ -227,7 +224,7 @@ local function make_config()
           ["ancestors"] = {},
         },
       },
-      ["priz"] = {
+      ["prize"] = {
         ["fields"] = {
           {
             ["name"] = "category",
@@ -258,7 +255,7 @@ local function make_config()
             ["index$"] = 3,
           },
         },
-        ["name"] = "priz",
+        ["name"] = "prize",
         ["op"] = {
           ["list"] = {
             ["name"] = "list",

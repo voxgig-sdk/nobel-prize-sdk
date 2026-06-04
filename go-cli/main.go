@@ -20,7 +20,7 @@ import (
 const prompt = "nobel-prize"
 
 // entitiesHelp is the space-separated entity list shown by :help.
-const entitiesHelp = "laureate priz"
+const entitiesHelp = "laureate prize"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

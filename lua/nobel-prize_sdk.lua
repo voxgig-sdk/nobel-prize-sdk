@@ -250,8 +250,8 @@ function NobelPrizeSDK:Laureate(data)
 end
 
 
-function NobelPrizeSDK:Priz(data)
-  local EntityMod = require("entity.priz_entity")
+function NobelPrizeSDK:Prize(data)
+  local EntityMod = require("entity.prize_entity")
   return EntityMod.new(self, data)
 end
 

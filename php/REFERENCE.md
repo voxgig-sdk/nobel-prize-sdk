@@ -46,9 +46,9 @@ $client = NobelPrizeSDK::test();
 
 Create a new `LaureateEntity` instance. Pass `null` for no initial data.
 
-#### `Priz($data = null)`
+#### `Prize($data = null)`
 
-Create a new `PrizEntity` instance. Pass `null` for no initial data.
+Create a new `PrizeEntity` instance. Pass `null` for no initial data.
 
 #### `optionsMap(): array`
 
@@ -104,7 +104,7 @@ $laureate = $client->Laureate();
 | `firstname` | ``$STRING`` | No |  |
 | `gender` | ``$STRING`` | No |  |
 | `id` | ``$STRING`` | No |  |
-| `priz` | ``$ARRAY`` | No |  |
+| `prize` | ``$ARRAY`` | No |  |
 | `surname` | ``$STRING`` | No |  |
 
 ### Operations
@@ -147,10 +147,10 @@ Return the entity name.
 
 ---
 
-## PrizEntity
+## PrizeEntity
 
 ```php
-$priz = $client->Priz();
+$prize = $client->Prize();
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ $priz = $client->Priz();
 List entities matching the given criteria. Returns an array.
 
 ```php
-[$results, $err] = $client->Priz()->list([]);
+[$results, $err] = $client->Prize()->list([]);
 ```
 
 ### Common Methods
@@ -190,9 +190,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): PrizEntity`
+#### `make(): PrizeEntity`
 
-Create a new `PrizEntity` instance with the same client and
+Create a new `PrizeEntity` instance with the same client and
 options.
 
 #### `getName(): string`
