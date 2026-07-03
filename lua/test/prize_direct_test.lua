@@ -1,4 +1,4 @@
--- Priz direct test
+-- Prize direct test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -6,13 +6,13 @@ local sdk = require("nobel-prize_sdk")
 local helpers = require("core.helpers")
 local runner = require("test.runner")
 
-describe("PrizDirect", function()
-  it("should direct-list-priz", function()
-    local setup = priz_direct_setup({
+describe("PrizeDirect", function()
+  it("should direct-list-prize", function()
+    local setup = prize_direct_setup({
       { id = "direct01" },
       { id = "direct02" },
     })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-priz", setup.live and "live" or "unit")
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-prize", setup.live and "live" or "unit")
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
       return
@@ -55,13 +55,13 @@ describe("PrizDirect", function()
 end)
 
 
-function priz_direct_setup(mockres)
+function prize_direct_setup(mockres)
   runner.load_env_local()
 
   local calls = {}
 
   local env = runner.env_override({
-    ["NOBELPRIZE_TEST_PRIZ_ENTID"] = {},
+    ["NOBELPRIZE_TEST_PRIZE_ENTID"] = {},
     ["NOBELPRIZE_TEST_LIVE"] = "FALSE",
     ["NOBELPRIZE_APIKEY"] = "NONE",
   })

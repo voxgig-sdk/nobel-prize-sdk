@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/nobel-prize-sdk/go/utility/struct"
 )
 
-type PrizEntity struct {
+type PrizeEntity struct {
 	name    string
 	client  *core.NobelPrizeSDK
 	utility *core.Utility
@@ -16,7 +16,7 @@ type PrizEntity struct {
 	entctx  *core.Context
 }
 
-func NewPrizEntity(client *core.NobelPrizeSDK, entopts map[string]any) *PrizEntity {
+func NewPrizeEntity(client *core.NobelPrizeSDK, entopts map[string]any) *PrizeEntity {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -28,8 +28,8 @@ func NewPrizEntity(client *core.NobelPrizeSDK, entopts map[string]any) *PrizEnti
 		entopts["active"] = true
 	}
 
-	e := &PrizEntity{
-		name:    "priz",
+	e := &PrizeEntity{
+		name:    "prize",
 		client:  client,
 		utility: client.GetUtility(),
 		entopts: entopts,
@@ -47,17 +47,17 @@ func NewPrizEntity(client *core.NobelPrizeSDK, entopts map[string]any) *PrizEnti
 	return e
 }
 
-func (e *PrizEntity) GetName() string { return e.name }
+func (e *PrizeEntity) GetName() string { return e.name }
 
-func (e *PrizEntity) Make() core.Entity {
+func (e *PrizeEntity) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewPrizEntity(e.client, opts)
+	return NewPrizeEntity(e.client, opts)
 }
 
-func (e *PrizEntity) Data(args ...any) any {
+func (e *PrizeEntity) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -71,7 +71,7 @@ func (e *PrizEntity) Data(args ...any) any {
 	return out
 }
 
-func (e *PrizEntity) Match(args ...any) any {
+func (e *PrizeEntity) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -85,13 +85,13 @@ func (e *PrizEntity) Match(args ...any) any {
 	return out
 }
 
-func (e *PrizEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PrizeEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
 
 
 
-func (e *PrizEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *PrizeEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":   "list",
@@ -112,22 +112,22 @@ func (e *PrizEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, er
 
 
 
-func (e *PrizEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PrizeEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("create", e.name)
 }
 
 
-func (e *PrizEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PrizeEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("update", e.name)
 }
 
 
-func (e *PrizEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
+func (e *PrizeEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("remove", e.name)
 }
 
 
-func (e *PrizEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *PrizeEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

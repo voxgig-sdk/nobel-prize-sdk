@@ -1,6 +1,6 @@
-# Entity: priz
+# Entity: prize
 
-main: kit: entity: priz: {
+main: kit: entity: prize: {
 
   alias: field: {}
 
@@ -27,7 +27,7 @@ main: kit: entity: priz: {
     }
   ]
 
-  name: "priz"
+  name: "prize"
   op: {
     list: {
       name: "list"

@@ -1,20 +1,8 @@
 # NobelPrize SDK
 
-Browse Nobel Prizes and the laureates who received them, from 1901 to the present
+Nobel Prize API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Nobel Prize API
-
-The Nobel Prize API is published by the [Nobel Foundation](https://www.nobelprize.org/) and exposes data about the Nobel Prizes and the laureates who have received them, going back to the first awards in 1901.
-
-What you get from the API:
-
-- A list/search endpoint for **laureates** — the people and organisations awarded a Nobel Prize.
-- A list/search endpoint for **Nobel Prizes** themselves — one record per prize, linking back to the relevant laureates.
-- Responses available in JSON or CSV.
-
-The API does not require an API key. CORS is enabled on the laureates endpoint. This SDK targets the `v1` server (`https://api.nobelprize.org/v1`); the Foundation also publishes newer versions (2.0, 2.1) and a SPARQL-based Linked Data endpoint at `data.nobelprize.org` for more advanced querying.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install nobel-prize-sdk
 luarocks install nobel-prize-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { NobelPrizeSDK } from 'nobel-prize'
 
-const client = new NobelPrizeSDK({})
+const client = new NobelPrizeSDK({
+  apikey: process.env.NOBEL-PRIZE_APIKEY,
+})
 
 // List all laureates
 const laureates = await client.Laureate().list()
+console.log(laureates.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,7 +90,7 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Laureate** | A person or organisation awarded a Nobel Prize, exposed via the `/laureates` endpoint. | `/laureate.json` |
+| **Laureate** |  | `/laureate.json` |
 | **Prize** |  | `/prize.json` |
 
 Each entity supports the following operations where available: **load**,
@@ -111,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from nobelprize_sdk import NobelPrizeSDK
 
-client = NobelPrizeSDK({})
+client = NobelPrizeSDK({
+    "apikey": os.environ.get("NOBEL-PRIZE_APIKEY"),
+})
 
 # List all laureates
-laureates, err = client.Laureate(None).list(None, None)
+laureates, err = client.Laureate().list()
+print(laureates)
 ```
 
 ### PHP
@@ -125,10 +119,13 @@ laureates, err = client.Laureate(None).list(None, None)
 <?php
 require_once 'nobelprize_sdk.php';
 
-$client = new NobelPrizeSDK([]);
+$client = new NobelPrizeSDK([
+    "apikey" => getenv("NOBEL-PRIZE_APIKEY"),
+]);
 
 // List all laureates
-[$laureates, $err] = $client->Laureate(null)->list(null, null);
+[$laureates, $err] = $client->Laureate()->list();
+print_r($laureates);
 ```
 
 ### Golang
@@ -136,10 +133,13 @@ $client = new NobelPrizeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/nobel-prize-sdk/go"
 
-client := sdk.NewNobelPrizeSDK(map[string]any{})
+client := sdk.NewNobelPrizeSDK(map[string]any{
+    "apikey": os.Getenv("NOBEL-PRIZE_APIKEY"),
+})
 
 // List all laureates
 laureates, err := client.Laureate(nil).List(nil, nil)
+fmt.Println(laureates)
 ```
 
 ### Ruby
@@ -147,10 +147,13 @@ laureates, err := client.Laureate(nil).List(nil, nil)
 ```ruby
 require_relative "NobelPrize_sdk"
 
-client = NobelPrizeSDK.new({})
+client = NobelPrizeSDK.new({
+  "apikey" => ENV["NOBEL-PRIZE_APIKEY"],
+})
 
 # List all laureates
-laureates, err = client.Laureate(nil).list(nil, nil)
+laureates, err = client.Laureate().list
+puts laureates
 ```
 
 ### Lua
@@ -158,10 +161,13 @@ laureates, err = client.Laureate(nil).list(nil, nil)
 ```lua
 local sdk = require("nobel-prize_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("NOBEL-PRIZE_APIKEY"),
+})
 
 -- List all laureates
-local laureates, err = client:Laureate(nil):list(nil, nil)
+local laureates, err = client:Laureate():list()
+print(laureates)
 ```
 
 ## Unit testing in offline mode
@@ -180,25 +186,21 @@ const result = await client.Laureate().load({ id: 'test01' })
 ### Python
 
 ```python
-client = NobelPrizeSDK.test(None, None)
-result, err = client.Laureate(None).load(
-    {"id": "test01"}, None
-)
+client = NobelPrizeSDK.test()
+result, err = client.Laureate().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = NobelPrizeSDK::test(null, null);
-[$result, $err] = $client->Laureate(null)->load(
-    ["id" => "test01"], null
-);
+$client = NobelPrizeSDK::test();
+[$result, $err] = $client->Laureate()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Laureate(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -207,19 +209,15 @@ result, err := client.Laureate(nil).Load(
 ### Ruby
 
 ```ruby
-client = NobelPrizeSDK.test(nil, nil)
-result, err = client.Laureate(nil).load(
-  { "id" => "test01" }, nil
-)
+client = NobelPrizeSDK.test
+result, err = client.Laureate().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Laureate(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Laureate():load({ id = "test01" })
 ```
 
 ## How it works
@@ -323,14 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Nobel Prize API
-
-- Upstream: [https://www.nobelprize.org/about/developer-zone-2/](https://www.nobelprize.org/about/developer-zone-2/)
-
-- Free to access; no API key or registration required.
-- Use is governed by the [Nobel Prize API terms of use](https://www.nobelprize.org/about/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/) — review before integrating.
-- The Nobel Foundation strongly encourages subscribing to their developer newsletter for change notifications.
 
 ---
 

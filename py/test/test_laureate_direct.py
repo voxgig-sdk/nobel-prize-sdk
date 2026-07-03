@@ -61,12 +61,14 @@ def _laureate_direct_setup(mockres):
     env = runner.env_override({
         "NOBELPRIZE_TEST_LAUREATE_ENTID": {},
         "NOBELPRIZE_TEST_LIVE": "FALSE",
+        "NOBELPRIZE_APIKEY": "NONE",
     })
 
     live = env.get("NOBELPRIZE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("NOBELPRIZE_APIKEY"),
         }
         client = NobelPrizeSDK(merged_opts)
         return {

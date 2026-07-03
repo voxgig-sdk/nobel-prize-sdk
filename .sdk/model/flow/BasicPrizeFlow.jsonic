@@ -1,10 +1,10 @@
-# BasicPrizFlow
+# BasicPrizeFlow
 
-main: kit: flow: BasicPrizFlow:
+main: kit: flow: BasicPrizeFlow:
 {
-  entity: "priz",
+  entity: "prize",
   kind: "basic",
-  name: "BasicPrizFlow",
+  name: "BasicPrizeFlow",
   step: [
     {
       op: "list",
@@ -12,11 +12,11 @@ main: kit: flow: BasicPrizFlow:
         {
           apply: "ItemExists",
           def: {
-            ref: "priz_ref01"
+            ref: "prize_ref01"
           }
         }
       ]
     }
   ],
-  "key$": "BasicPrizFlow"
+  "key$": "BasicPrizeFlow"
 }

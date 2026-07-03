@@ -1,13 +1,13 @@
--- NobelPrize SDK Priz entity
+-- NobelPrize SDK Prize entity
 
 local vs = require("utility.struct.struct")
 local helpers = require("core.helpers")
 
-local PrizEntity = {}
-PrizEntity.__index = PrizEntity
+local PrizeEntity = {}
+PrizeEntity.__index = PrizeEntity
 
 
-function PrizEntity.new(client, entopts)
+function PrizeEntity.new(client, entopts)
   entopts = entopts or {}
   if entopts["active"] == nil then
     entopts["active"] = true
@@ -17,8 +17,8 @@ function PrizEntity.new(client, entopts)
     entopts["active"] = true
   end
 
-  local self = setmetatable({}, PrizEntity)
-  self._name = "priz"
+  local self = setmetatable({}, PrizeEntity)
+  self._name = "prize"
   self._client = client
   self._utility = client:get_utility()
   self._entopts = entopts
@@ -36,21 +36,21 @@ function PrizEntity.new(client, entopts)
 end
 
 
-function PrizEntity:get_name()
+function PrizeEntity:get_name()
   return self._name
 end
 
 
-function PrizEntity:make()
+function PrizeEntity:make()
   local opts = {}
   for k, v in pairs(self._entopts) do
     opts[k] = v
   end
-  return PrizEntity.new(self._client, opts)
+  return PrizeEntity.new(self._client, opts)
 end
 
 
-function PrizEntity:data_set(args)
+function PrizeEntity:data_set(args)
   if args ~= nil then
     self._data = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetData")
@@ -58,13 +58,13 @@ function PrizEntity:data_set(args)
 end
 
 
-function PrizEntity:data_get()
+function PrizeEntity:data_get()
   self._utility.feature_hook(self._entctx, "GetData")
   return vs.clone(self._data)
 end
 
 
-function PrizEntity:match_set(args)
+function PrizeEntity:match_set(args)
   if args ~= nil then
     self._match = helpers.to_map(vs.clone(args)) or {}
     self._utility.feature_hook(self._entctx, "SetMatch")
@@ -72,7 +72,7 @@ function PrizEntity:match_set(args)
 end
 
 
-function PrizEntity:match_get()
+function PrizeEntity:match_get()
   self._utility.feature_hook(self._entctx, "GetMatch")
   return vs.clone(self._match)
 end
@@ -81,7 +81,7 @@ end
 
 
 
-function PrizEntity:list(reqmatch, ctrl)
+function PrizeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
     opname = "list",
@@ -109,7 +109,7 @@ end
 
 
 
-function PrizEntity:_run_op(ctx, post_done)
+function PrizeEntity:_run_op(ctx, post_done)
   local utility = self._utility
 
   -- #PrePoint-Hook
@@ -164,4 +164,4 @@ function PrizEntity:_run_op(ctx, post_done)
 end
 
 
-return PrizEntity
+return PrizeEntity

@@ -1,9 +1,9 @@
-# NobelPrize SDK Priz entity
+# NobelPrize SDK Prize entity
 
 require_relative '../utility/struct/voxgig_struct'
 require_relative '../core/helpers'
 
-class PrizEntity
+class PrizeEntity
   def initialize(client, entopts = nil)
     entopts ||= {}
     if entopts["active"].nil?
@@ -14,7 +14,7 @@ class PrizEntity
       entopts["active"] = true
     end
 
-    @_name = "priz"
+    @_name = "prize"
     @_client = client
     @_utility = client.get_utility
     @_entopts = entopts
@@ -35,7 +35,7 @@ class PrizEntity
 
   def make
     opts = @_entopts.dup
-    PrizEntity.new(@_client, opts)
+    PrizeEntity.new(@_client, opts)
   end
 
   def data_set(args)

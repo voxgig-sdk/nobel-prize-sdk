@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-// Priz direct test
+// Prize direct test
 
 require_once __DIR__ . '/../nobelprize_sdk.php';
 require_once __DIR__ . '/Runner.php';
 
 use PHPUnit\Framework\TestCase;
 
-class PrizDirectTest extends TestCase
+class PrizeDirectTest extends TestCase
 {
-    public function test_direct_list_priz(): void
+    public function test_direct_list_prize(): void
     {
-        $setup = priz_direct_setup([
+        $setup = prize_direct_setup([
             ["id" => "direct01"],
             ["id" => "direct02"],
         ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-priz", $setup["live"] ? "live" : "unit");
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-prize", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -59,14 +59,14 @@ class PrizDirectTest extends TestCase
 }
 
 
-function priz_direct_setup($mockres)
+function prize_direct_setup($mockres)
 {
     Runner::load_env_local();
 
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "NOBELPRIZE_TEST_PRIZ_ENTID" => [],
+        "NOBELPRIZE_TEST_PRIZE_ENTID" => [],
         "NOBELPRIZE_TEST_LIVE" => "FALSE",
         "NOBELPRIZE_APIKEY" => "NONE",
     ]);

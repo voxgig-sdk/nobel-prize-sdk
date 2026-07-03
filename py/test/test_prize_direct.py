@@ -1,4 +1,4 @@
-# Priz direct test
+# Prize direct test
 
 import json
 import pytest
@@ -9,14 +9,14 @@ from core import helpers
 from test import runner
 
 
-class TestPrizDirect:
+class TestPrizeDirect:
 
-    def test_should_direct_list_priz(self):
-        setup = _priz_direct_setup([
+    def test_should_direct_list_prize(self):
+        setup = _prize_direct_setup([
             {"id": "direct01"},
             {"id": "direct02"},
         ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-priz", "live" if setup["live"] else "unit")
+        _skip, _reason = runner.is_control_skipped("direct", "direct-list-prize", "live" if setup["live"] else "unit")
         if _skip:
             # pytest already imported at module scope
             pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -53,13 +53,13 @@ class TestPrizDirect:
 
 
 
-def _priz_direct_setup(mockres):
+def _prize_direct_setup(mockres):
     runner.load_env_local()
 
     calls = []
 
     env = runner.env_override({
-        "NOBELPRIZE_TEST_PRIZ_ENTID": {},
+        "NOBELPRIZE_TEST_PRIZE_ENTID": {},
         "NOBELPRIZE_TEST_LIVE": "FALSE",
         "NOBELPRIZE_APIKEY": "NONE",
     })

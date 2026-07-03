@@ -1,10 +1,10 @@
-# NobelPrize SDK Priz entity
+# NobelPrize SDK Prize entity
 
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
 
 
-class PrizEntity:
+class PrizeEntity:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -16,7 +16,7 @@ class PrizEntity:
         else:
             entopts["active"] = True
 
-        self._name = "priz"
+        self._name = "prize"
         self._client = client
         self._utility = client.get_utility()
         self._entopts = entopts
@@ -37,7 +37,7 @@ class PrizEntity:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return PrizEntity(self._client, opts)
+        return PrizeEntity(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:

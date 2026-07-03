@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-// NobelPrize SDK Priz entity
+// NobelPrize SDK Prize entity
 
 require_once __DIR__ . '/../utility/struct/Struct.php';
 require_once __DIR__ . '/../core/Helpers.php';
 
 use Voxgig\Struct\Struct;
 
-class PrizEntity
+class PrizeEntity
 {
     private string $_name;
     private $_client;
@@ -29,7 +29,7 @@ class PrizEntity
             $entopts["active"] = true;
         }
 
-        $this->_name = "priz";
+        $this->_name = "prize";
         $this->_client = $client;
         $this->_utility = $client->get_utility();
         $this->_entopts = $entopts;
@@ -52,7 +52,7 @@ class PrizEntity
     public function make(): self
     {
         $opts = $this->_entopts;
-        return new PrizEntity($this->_client, $opts);
+        return new PrizeEntity($this->_client, $opts);
     }
 
     public function data_set($args): void

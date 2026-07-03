@@ -16,7 +16,7 @@ import {
 } from '../../utility'
 
 
-describe('PrizDirect', async () => {
+describe('PrizeDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when NOBELPRIZE_TEST_LIVE=TRUE.
@@ -31,9 +31,9 @@ describe('PrizDirect', async () => {
   })
 
 
-  test('direct-list-priz', async (t: any) => {
+  test('direct-list-prize', async (t: any) => {
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-priz', setup.live)) return
+    if (maybeSkipControl(t, 'direct', 'direct-list-prize', setup.live)) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -77,7 +77,7 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'NOBELPRIZE_TEST_PRIZ_ENTID': {},
+    'NOBELPRIZE_TEST_PRIZE_ENTID': {},
     'NOBELPRIZE_TEST_LIVE': 'FALSE',
     'NOBELPRIZE_APIKEY': 'NONE',
   })
@@ -89,7 +89,7 @@ function directSetup(mockres?: any) {
       apikey: env.NOBELPRIZE_APIKEY,
     })
 
-    let idmap: any = env['NOBELPRIZE_TEST_PRIZ_ENTID']
+    let idmap: any = env['NOBELPRIZE_TEST_PRIZE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

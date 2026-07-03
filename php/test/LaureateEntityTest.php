@@ -86,6 +86,7 @@ function laureate_basic_setup($extra)
         "NOBELPRIZE_TEST_LAUREATE_ENTID" => $idmap,
         "NOBELPRIZE_TEST_LIVE" => "FALSE",
         "NOBELPRIZE_TEST_EXPLAIN" => "FALSE",
+        "NOBELPRIZE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,6 +98,7 @@ function laureate_basic_setup($extra)
     if ($env["NOBELPRIZE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["NOBELPRIZE_APIKEY"],
             ],
             $extra ?? [],
         ]);

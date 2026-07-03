@@ -16,18 +16,18 @@ import type {
 
 
 // TODO: needs Entity superclass
-class PrizEntity extends NobelPrizeEntityBase {
+class PrizeEntity extends NobelPrizeEntityBase {
 
   constructor(client: NobelPrizeSDK, entopts: any) {
     super(client, entopts)
-    this.name = 'priz'
-    this.name_ = 'priz'
-    this.Name = 'Priz'
+    this.name = 'prize'
+    this.name_ = 'prize'
+    this.Name = 'Prize'
   }
 
 
-  make(this: PrizEntity) {
-    return new PrizEntity(this._client, this.entopts())
+  make(this: PrizeEntity) {
+    return new PrizeEntity(this._client, this.entopts())
   }
 
 
@@ -146,5 +146,5 @@ class PrizEntity extends NobelPrizeEntityBase {
 
 
 export {
-  PrizEntity
+  PrizeEntity
 }

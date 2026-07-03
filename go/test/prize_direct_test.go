@@ -10,9 +10,9 @@ import (
 	"github.com/voxgig-sdk/nobel-prize-sdk/go/core"
 )
 
-func TestPrizDirect(t *testing.T) {
-	t.Run("direct-list-priz", func(t *testing.T) {
-		setup := prizDirectSetup([]any{
+func TestPrizeDirect(t *testing.T) {
+	t.Run("direct-list-prize", func(t *testing.T) {
+		setup := prizeDirectSetup([]any{
 			map[string]any{"id": "direct01"},
 			map[string]any{"id": "direct02"},
 		})
@@ -20,7 +20,7 @@ func TestPrizDirect(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-priz", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-prize", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -78,20 +78,20 @@ func TestPrizDirect(t *testing.T) {
 
 }
 
-type prizDirectSetupResult struct {
+type prizeDirectSetupResult struct {
 	client *sdk.NobelPrizeSDK
 	calls  *[]map[string]any
 	live   bool
 	idmap  map[string]any
 }
 
-func prizDirectSetup(mockres any) *prizDirectSetupResult {
+func prizeDirectSetup(mockres any) *prizeDirectSetupResult {
 	loadEnvLocal()
 
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"NOBELPRIZE_TEST_PRIZ_ENTID": map[string]any{},
+		"NOBELPRIZE_TEST_PRIZE_ENTID": map[string]any{},
 		"NOBELPRIZE_TEST_LIVE":    "FALSE",
 		"NOBELPRIZE_APIKEY":       "NONE",
 	})
@@ -105,7 +105,7 @@ func prizDirectSetup(mockres any) *prizDirectSetupResult {
 		client := sdk.NewNobelPrizeSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["NOBELPRIZE_TEST_PRIZ_ENTID"]; ok {
+		if entidRaw, ok := env["NOBELPRIZE_TEST_PRIZE_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {
@@ -113,7 +113,7 @@ func prizDirectSetup(mockres any) *prizDirectSetupResult {
 			}
 		}
 
-		return &prizDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
+		return &prizeDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
 	}
 
 	mockFetch := func(url string, init map[string]any) (map[string]any, error) {
@@ -138,7 +138,7 @@ func prizDirectSetup(mockres any) *prizDirectSetupResult {
 		},
 	})
 
-	return &prizDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
+	return &prizeDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
 }
 
 var _ = os.Getenv

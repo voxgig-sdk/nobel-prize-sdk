@@ -63,12 +63,14 @@ function laureate_direct_setup(mockres)
   local env = runner.env_override({
     ["NOBELPRIZE_TEST_LAUREATE_ENTID"] = {},
     ["NOBELPRIZE_TEST_LIVE"] = "FALSE",
+    ["NOBELPRIZE_APIKEY"] = "NONE",
   })
 
   local live = env["NOBELPRIZE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["NOBELPRIZE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

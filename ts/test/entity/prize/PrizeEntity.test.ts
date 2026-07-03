@@ -23,7 +23,7 @@ import {
 } from '../../utility'
 
 
-describe('PrizEntity', async () => {
+describe('PrizeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when NOBELPRIZE_TEST_LIVE=TRUE.
@@ -31,7 +31,7 @@ describe('PrizEntity', async () => {
 
   test('instance', async () => {
     const testsdk = NobelPrizeSDK.test()
-    const ent = testsdk.Priz()
+    const ent = testsdk.Prize()
     assert(null != ent)
   })
 
@@ -40,7 +40,7 @@ describe('PrizEntity', async () => {
 
     const live = 'TRUE' === process.env.NOBEL_PRIZE_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'priz.' + op, live)) return
+      if (maybeSkipControl(t, 'entityOp', 'prize.' + op, live)) return
     }
 
     const setup = basicSetup()
@@ -48,7 +48,7 @@ describe('PrizEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set NOBEL_PRIZE_TEST_PRIZ_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set NOBEL_PRIZE_TEST_PRIZE_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -57,13 +57,13 @@ describe('PrizEntity', async () => {
     const isempty = struct.isempty
     const select = struct.select
 
-    let priz_ref01_data = Object.values(setup.data.existing.priz)[0] as any
+    let prize_ref01_data = Object.values(setup.data.existing.prize)[0] as any
 
     // LIST
-    const priz_ref01_ent = client.Priz()
-    const priz_ref01_match: any = {}
+    const prize_ref01_ent = client.Prize()
+    const prize_ref01_match: any = {}
 
-    const priz_ref01_list = await priz_ref01_ent.list(priz_ref01_match)
+    const prize_ref01_list = await prize_ref01_ent.list(prize_ref01_match)
 
 
   })
@@ -78,7 +78,7 @@ function basicSetup(extra?: any) {
   // TODO: needs test utility to resolve path
   const entityDataFile =
     Path.resolve(__dirname, 
-      '../../../../.sdk/test/entity/priz/PrizTestData.json')
+      '../../../../.sdk/test/entity/prize/PrizeTestData.json')
 
   // TODO: file ready util needed?
   const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
@@ -94,7 +94,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['priz01','priz02','priz03'],
+    ['prize01','prize02','prize03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -106,17 +106,17 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['NOBEL_PRIZE_TEST_PRIZ_ENTID']
+  const idmapEnvVal = process.env['NOBEL_PRIZE_TEST_PRIZE_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'NOBEL_PRIZE_TEST_PRIZ_ENTID': idmap,
+    'NOBEL_PRIZE_TEST_PRIZE_ENTID': idmap,
     'NOBEL_PRIZE_TEST_LIVE': 'FALSE',
     'NOBEL_PRIZE_TEST_EXPLAIN': 'FALSE',
     'NOBEL_PRIZE_APIKEY': 'NONE',
   })
 
-  idmap = env['NOBEL_PRIZE_TEST_PRIZ_ENTID']
+  idmap = env['NOBEL_PRIZE_TEST_PRIZE_ENTID']
 
   const live = 'TRUE' === env.NOBEL_PRIZE_TEST_LIVE
 

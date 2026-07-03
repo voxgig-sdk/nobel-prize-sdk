@@ -1,19 +1,19 @@
 {
   "existing": {
-    "priz": {
-      "PRIZ00": {
+    "prize": {
+      "PRIZE00": {
         "category": "s28",
         "laureate": [],
         "overall_motivation": "s2a",
         "year": "s2b"
       },
-      "PRIZ01": {
+      "PRIZE01": {
         "category": "s50",
         "laureate": [],
         "overall_motivation": "s52",
         "year": "s53"
       },
-      "PRIZ02": {
+      "PRIZE02": {
         "category": "s78",
         "laureate": [],
         "overall_motivation": "s7a",
@@ -22,8 +22,8 @@
     }
   },
   "new": {
-    "priz": {
-      "priz_ref01": {
+    "prize": {
+      "prize_ref01": {
         "category": "sa0",
         "laureate": [],
         "overall_motivation": "sa2",

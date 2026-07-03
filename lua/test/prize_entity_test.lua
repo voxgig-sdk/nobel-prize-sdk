@@ -1,4 +1,4 @@
--- Priz entity test
+-- Prize entity test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -8,19 +8,19 @@ local runner = require("test.runner")
 
 local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
 
-describe("PrizEntity", function()
+describe("PrizeEntity", function()
   it("should create instance", function()
     local testsdk = sdk.test(nil, nil)
-    local ent = testsdk:Priz(nil)
+    local ent = testsdk:Prize(nil)
     assert.is_not_nil(ent)
   end)
 
   it("should run basic flow", function()
-    local setup = priz_basic_setup(nil)
+    local setup = prize_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
     for _, _op in ipairs({"list"}) do
-      local _should_skip, _reason = runner.is_control_skipped("entityOp", "priz." .. _op, _live and "live" or "unit")
+      local _should_skip, _reason = runner.is_control_skipped("entityOp", "prize." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
         return
@@ -29,37 +29,37 @@ describe("PrizEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set NOBELPRIZE_TEST_PRIZ_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set NOBELPRIZE_TEST_PRIZE_ENTID JSON to run live")
       return
     end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
-    local priz_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.priz")))
-    local priz_ref01_data = nil
-    if #priz_ref01_data_raw > 0 then
-      priz_ref01_data = helpers.to_map(priz_ref01_data_raw[1][2])
+    local prize_ref01_data_raw = vs.items(helpers.to_map(
+      vs.getpath(setup.data, "existing.prize")))
+    local prize_ref01_data = nil
+    if #prize_ref01_data_raw > 0 then
+      prize_ref01_data = helpers.to_map(prize_ref01_data_raw[1][2])
     end
 
     -- LIST
-    local priz_ref01_ent = client:Priz(nil)
-    local priz_ref01_match = {}
+    local prize_ref01_ent = client:Prize(nil)
+    local prize_ref01_match = {}
 
-    local priz_ref01_list_result, err = priz_ref01_ent:list(priz_ref01_match, nil)
+    local prize_ref01_list_result, err = prize_ref01_ent:list(prize_ref01_match, nil)
     assert.is_nil(err)
-    assert.is_table(priz_ref01_list_result)
+    assert.is_table(prize_ref01_list_result)
 
   end)
 end)
 
-function priz_basic_setup(extra)
+function prize_basic_setup(extra)
   runner.load_env_local()
 
-  local entity_data_file = _test_dir .. "../../.sdk/test/entity/priz/PrizTestData.json"
+  local entity_data_file = _test_dir .. "../../.sdk/test/entity/prize/PrizeTestData.json"
   local f = io.open(entity_data_file, "r")
   if f == nil then
-    error("failed to read priz test data: " .. entity_data_file)
+    error("failed to read prize test data: " .. entity_data_file)
   end
   local entity_data_source = f:read("*a")
   f:close()
@@ -73,7 +73,7 @@ function priz_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "priz01", "priz02", "priz03" },
+    { "prize01", "prize02", "prize03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",
@@ -85,18 +85,18 @@ function priz_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("NOBELPRIZE_TEST_PRIZ_ENTID")
+  local entid_env_raw = os.getenv("NOBELPRIZE_TEST_PRIZE_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["NOBELPRIZE_TEST_PRIZ_ENTID"] = idmap,
+    ["NOBELPRIZE_TEST_PRIZE_ENTID"] = idmap,
     ["NOBELPRIZE_TEST_LIVE"] = "FALSE",
     ["NOBELPRIZE_TEST_EXPLAIN"] = "FALSE",
     ["NOBELPRIZE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["NOBELPRIZE_TEST_PRIZ_ENTID"])
+    env["NOBELPRIZE_TEST_PRIZE_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
