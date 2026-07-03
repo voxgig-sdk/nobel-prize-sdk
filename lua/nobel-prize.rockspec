@@ -8,12 +8,14 @@ source = {
   dir = "nobel-prize-sdk/lua"
 }
 description = {
-  summary = "NobelPrize SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Nobel Prize public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/nobel-prize-sdk",
+  issues_url = "https://github.com/voxgig-sdk/nobel-prize-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "nobel-prize" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

@@ -10,7 +10,7 @@ The TypeScript SDK for the NobelPrize API — a type-safe, entity-oriented clien
 
 ## Install
 ```bash
-npm install nobel-prize
+npm install @voxgig-sdk/nobel-prize
 ```
 ## Tutorial: your first API call
 

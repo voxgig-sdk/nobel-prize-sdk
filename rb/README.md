@@ -10,13 +10,13 @@ The Ruby SDK for the NobelPrize API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install nobel-prize-sdk
+gem install voxgig-sdk-nobel-prize
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "nobel-prize-sdk"
+gem "voxgig-sdk-nobel-prize"
 ```
 
 Then run:

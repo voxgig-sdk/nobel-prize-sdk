@@ -10,7 +10,7 @@ The Python SDK for the NobelPrize API — an entity-oriented client following Py
 
 ## Install
 ```bash
-pip install nobel-prize-sdk
+pip install voxgig-sdk-nobel-prize
 ```
 
 Or install from source:

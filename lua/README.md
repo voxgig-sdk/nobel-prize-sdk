@@ -10,7 +10,7 @@ The Lua SDK for the NobelPrize API — an entity-oriented client using Lua conve
 
 ## Install
 ```bash
-luarocks install nobel-prize-sdk
+luarocks install voxgig-sdk-nobel-prize
 ```
 
 If the module is not yet published, add the source directory to

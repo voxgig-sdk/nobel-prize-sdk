@@ -10,7 +10,7 @@ The PHP SDK for the NobelPrize API — an entity-oriented client using PHP conve
 
 ## Install
 ```bash
-composer require voxgig/nobel-prize-sdk
+composer require voxgig-sdk/nobel-prize
 ```
 
 
