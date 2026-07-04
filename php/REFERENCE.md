@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## LaureateEntity
 
 ```php
-$laureate = $client->laureate();
+$laureate = $client->Laureate();
 ```
 
 ### Fields
@@ -117,7 +117,7 @@ $laureate = $client->laureate();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->laureate()->list([]);
+$results = $client->Laureate()->list([]);
 ```
 
 ### Common Methods
@@ -153,7 +153,7 @@ Return the entity name.
 ## PrizeEntity
 
 ```php
-$prize = $client->prize();
+$prize = $client->Prize();
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ $prize = $client->prize();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->prize()->list([]);
+$results = $client->Prize()->list([]);
 ```
 
 ### Common Methods

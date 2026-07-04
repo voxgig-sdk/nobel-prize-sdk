@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:laureate():list() / client:laureate():load({ id = ... })
-function NobelPrizeSDK:laureate(data)
+-- Idiomatic facade: client:Laureate():list() / client:Laureate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NobelPrizeSDK:Laureate(data)
   local EntityMod = require("entity.laureate_entity")
   if data == nil then
     if self._laureate == nil then
@@ -256,15 +257,10 @@ function NobelPrizeSDK:laureate(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:laureate() instead.
-function NobelPrizeSDK:Laureate(data)
-  local EntityMod = require("entity.laureate_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:prize():list() / client:prize():load({ id = ... })
-function NobelPrizeSDK:prize(data)
+-- Idiomatic facade: client:Prize():list() / client:Prize():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NobelPrizeSDK:Prize(data)
   local EntityMod = require("entity.prize_entity")
   if data == nil then
     if self._prize == nil then
@@ -272,12 +268,6 @@ function NobelPrizeSDK:prize(data)
     end
     return self._prize
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:prize() instead.
-function NobelPrizeSDK:Prize(data)
-  local EntityMod = require("entity.prize_entity")
   return EntityMod.new(self, data)
 end
 

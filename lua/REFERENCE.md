@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## LaureateEntity
 
 ```lua
-local laureate = client:laureate(nil)
+local laureate = client:Laureate(nil)
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ local laureate = client:laureate(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:laureate():list()
+local results, err = client:Laureate():list()
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ Return the entity name.
 ## PrizeEntity
 
 ```lua
-local prize = client:prize(nil)
+local prize = client:Prize(nil)
 ```
 
 ### Fields
@@ -170,7 +170,7 @@ local prize = client:prize(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:prize():list()
+local results, err = client:Prize():list()
 ```
 
 ### Common Methods

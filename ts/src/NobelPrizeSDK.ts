@@ -205,28 +205,14 @@ class NobelPrizeSDK {
 
 
 
-  _laureate?: LaureateEntity
-
-  // Idiomatic facade: `client.laureate.list()` / `client.laureate.load({ id })`.
-  get laureate(): LaureateEntity {
-    return (this._laureate ??= new LaureateEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.laureate` instead. */
+  // Entity access: `client.Laureate().list()` / `client.Laureate().load({ id })`.
   Laureate(data?: any) {
     const self = this
     return new LaureateEntity(self,data)
   }
 
 
-  _prize?: PrizeEntity
-
-  // Idiomatic facade: `client.prize.list()` / `client.prize.load({ id })`.
-  get prize(): PrizeEntity {
-    return (this._prize ??= new PrizeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.prize` instead. */
+  // Entity access: `client.Prize().list()` / `client.Prize().load({ id })`.
   Prize(data?: any) {
     const self = this
     return new PrizeEntity(self,data)

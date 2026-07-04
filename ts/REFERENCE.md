@@ -121,7 +121,7 @@ Alias for `NobelPrizeSDK.test()`.
 ## LaureateEntity
 
 ```ts
-const laureate = client.laureate
+const laureate = client.Laureate()
 ```
 
 ### Fields
@@ -149,7 +149,7 @@ const laureate = client.laureate
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.laureate.list()
+const results = await client.Laureate().list()
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ Return a copy of the entity options.
 ## PrizeEntity
 
 ```ts
-const prize = client.prize
+const prize = client.Prize()
 ```
 
 ### Fields
@@ -202,7 +202,7 @@ const prize = client.prize
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.prize.list()
+const results = await client.Prize().list()
 ```
 
 ### Common Methods

@@ -29,18 +29,16 @@ require_once 'nobelprize_sdk.php';
 $client = new NobelPrizeSDK();
 ```
 
-### 2. List laureates
+### 2. List laureate records
 
 ```php
 try {
-    $result = $client->laureate()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Laureate records — iterate directly.
+    $laureates = $client->Laureate()->list();
+    foreach ($laureates as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = NobelPrizeSDK::test();
+$client = NobelPrizeSDK::test([
+    "entity" => ["laureate" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->laureate()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$laureate = $client->Laureate()->load(["id" => "test01"]);
+print_r($laureate);
 ```
 
 ### Use a custom fetch function
@@ -254,7 +256,7 @@ API path: `/prize.json`
 
 ### Laureate
 
-Create an instance: `const laureate = client.laureate`
+Create an instance: `$laureate = $client->Laureate();`
 
 #### Operations
 
@@ -282,14 +284,15 @@ Create an instance: `const laureate = client.laureate`
 
 #### Example: List
 
-```ts
-const laureates = await client.laureate.list()
+```php
+// list() returns an array of Laureate records (throws on error).
+$laureates = $client->Laureate()->list();
 ```
 
 
 ### Prize
 
-Create an instance: `const prize = client.prize`
+Create an instance: `$prize = $client->Prize();`
 
 #### Operations
 
@@ -308,8 +311,9 @@ Create an instance: `const prize = client.prize`
 
 #### Example: List
 
-```ts
-const prizes = await client.prize.list()
+```php
+// list() returns an array of Prize records (throws on error).
+$prizes = $client->Prize()->list();
 ```
 
 
@@ -384,7 +388,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$laureate = $client->laureate();
+$laureate = $client->Laureate();
 $laureate->load(["id" => "example_id"]);
 
 // $laureate->dataGet() now returns the loaded laureate data

@@ -233,10 +233,10 @@ class NobelPrizeSDK
 
     private $_laureate = null;
 
-    // Idiomatic facade: $client->laureate()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Laureate() (PHP method
-    // names are case-insensitive).
-    public function laureate($data = null)
+    // Canonical facade: $client->Laureate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->laureate()
+    // resolves here too.
+    public function Laureate($data = null)
     {
         require_once __DIR__ . '/entity/laureate_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class NobelPrizeSDK
 
     private $_prize = null;
 
-    // Idiomatic facade: $client->prize()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Prize() (PHP method
-    // names are case-insensitive).
-    public function prize($data = null)
+    // Canonical facade: $client->Prize()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->prize()
+    // resolves here too.
+    public function Prize($data = null)
     {
         require_once __DIR__ . '/entity/prize_entity.php';
         if ($data === null) {

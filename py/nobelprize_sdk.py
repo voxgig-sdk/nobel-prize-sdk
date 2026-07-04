@@ -220,41 +220,21 @@ class NobelPrizeSDK:
         }
 
 
-    @property
-    def laureate(self):
-        """Idiomatic facade: client.laureate.list() / client.laureate.load({"id": ...})."""
-        from entity.laureate_entity import LaureateEntity
-        cached = getattr(self, "_laureate", None)
-        if cached is None:
-            cached = LaureateEntity(self, None)
-            self._laureate = cached
-        return cached
-
-    def Laureate(self, data=None):
-        # Deprecated: use client.laureate instead.
+    def Laureate(self, data=None) -> "LaureateEntity":
+        """Entity factory: client.Laureate().list({}) / client.Laureate().load({"id": ...})."""
         from entity.laureate_entity import LaureateEntity
         return LaureateEntity(self, data)
 
 
-    @property
-    def prize(self):
-        """Idiomatic facade: client.prize.list() / client.prize.load({"id": ...})."""
-        from entity.prize_entity import PrizeEntity
-        cached = getattr(self, "_prize", None)
-        if cached is None:
-            cached = PrizeEntity(self, None)
-            self._prize = cached
-        return cached
-
-    def Prize(self, data=None):
-        # Deprecated: use client.prize instead.
+    def Prize(self, data=None) -> "PrizeEntity":
+        """Entity factory: client.Prize().list({}) / client.Prize().load({"id": ...})."""
         from entity.prize_entity import PrizeEntity
         return PrizeEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "NobelPrizeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class NobelPrizeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.laureate_entity import LaureateEntity
+    from entity.prize_entity import PrizeEntity

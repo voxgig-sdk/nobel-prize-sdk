@@ -28,16 +28,14 @@ require_relative "NobelPrize_sdk"
 client = NobelPrizeSDK.new
 ```
 
-### 2. List laureates
+### 2. List laureate records
 
 ```ruby
 begin
-  result = client.laureate.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Laureate records — iterate directly.
+  laureates = client.Laureate.list
+  laureates.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = NobelPrizeSDK.test
+client = NobelPrizeSDK.test({
+  "entity" => { "laureate" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.laureate.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+laureate = client.Laureate.load({ "id" => "test01" })
+puts laureate
 ```
 
 ### Use a custom fetch function
@@ -249,7 +251,7 @@ API path: `/prize.json`
 
 ### Laureate
 
-Create an instance: `const laureate = client.laureate`
+Create an instance: `laureate = client.Laureate`
 
 #### Operations
 
@@ -277,14 +279,15 @@ Create an instance: `const laureate = client.laureate`
 
 #### Example: List
 
-```ts
-const laureates = await client.laureate.list()
+```ruby
+# list returns an Array of Laureate records (raises on error).
+laureates = client.Laureate.list
 ```
 
 
 ### Prize
 
-Create an instance: `const prize = client.prize`
+Create an instance: `prize = client.Prize`
 
 #### Operations
 
@@ -303,8 +306,9 @@ Create an instance: `const prize = client.prize`
 
 #### Example: List
 
-```ts
-const prizes = await client.prize.list()
+```ruby
+# list returns an Array of Prize records (raises on error).
+prizes = client.Prize.list
 ```
 
 
@@ -379,7 +383,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-laureate = client.laureate
+laureate = client.Laureate
 laureate.load({ "id" => "example_id" })
 
 # laureate.data_get now returns the loaded laureate data

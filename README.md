@@ -26,9 +26,11 @@ import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize'
 
 const client = new NobelPrizeSDK()
 
-// List all laureates
-const laureates = await client.laureate.list()
-console.log(laureates.data)
+// List all laureates (returns Laureate[])
+const laureates = await client.Laureate().list()
+for (const laureate of laureates) {
+  console.log(laureate)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from nobelprize_sdk import NobelPrizeSDK
 
 client = NobelPrizeSDK()
 
-# List all laureates
-laureates = client.laureate.list()
-print(laureates)
+# List all laureates (returns a list, raises on error)
+laureates = client.Laureate().list({})
+for laureate in laureates:
+    print(laureate)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'nobelprize_sdk.php';
 
 $client = new NobelPrizeSDK();
 
-// List all laureates (throws on error)
-$laureates = $client->laureate()->list();
+// List all laureates (returns an array; throws on error)
+$laureates = $client->Laureate()->list();
 print_r($laureates);
 ```
 
@@ -121,8 +124,8 @@ require_relative "NobelPrize_sdk"
 
 client = NobelPrizeSDK.new
 
-# List all laureates
-laureates = client.laureate.list
+# List all laureates (returns an Array; raises on error)
+laureates = client.Laureate.list
 puts laureates
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("nobel-prize_sdk")
 local client = sdk.new()
 
 -- List all laureates
-local laureates, err = client:laureate():list()
+local laureates, err = client:Laureate():list()
 print(laureates)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = NobelPrizeSDK.test()
-const result = await client.laureate.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const laureate = await client.Laureate().load({ id: 'test01' })
+// laureate is a bare Laureate populated with mock data
+console.log(laureate)
 ```
 
 ### Python
 
 ```python
 client = NobelPrizeSDK.test()
-result = client.laureate.load({"id": "test01"})
+laureate = client.Laureate().load({"id": "test01"})
+print(laureate)
 ```
 
 ### PHP
 
 ```php
-$client = NobelPrizeSDK::test();
-$result = $client->laureate()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = NobelPrizeSDK::test([
+    "entity" => ["laureate" => ["test01" => ["id" => "test01"]]],
+]);
+$laureate = $client->Laureate()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.Laureate(nil).Load(
 ### Ruby
 
 ```ruby
-client = NobelPrizeSDK.test
-result = client.laureate.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = NobelPrizeSDK.test({
+  "entity" => { "laureate" => { "test01" => { "id" => "test01" } } },
+})
+laureate = client.Laureate.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:laureate():load({ id = "test01" })
+local result, err = client:Laureate():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

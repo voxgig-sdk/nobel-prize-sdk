@@ -208,26 +208,14 @@ class NobelPrizeSDK
   end
 
 
-  # Idiomatic facade: client.laureate.list / client.laureate.load({ "id" => ... })
-  def laureate
-    require_relative 'entity/laureate_entity'
-    @laureate ||= LaureateEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.laureate instead.
+  # Canonical facade: client.Laureate.list / client.Laureate.load({ "id" => ... })
   def Laureate(data = nil)
     require_relative 'entity/laureate_entity'
     LaureateEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.prize.list / client.prize.load({ "id" => ... })
-  def prize
-    require_relative 'entity/prize_entity'
-    @prize ||= PrizeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.prize instead.
+  # Canonical facade: client.Prize.list / client.Prize.load({ "id" => ... })
   def Prize(data = nil)
     require_relative 'entity/prize_entity'
     PrizeEntity.new(self, data)

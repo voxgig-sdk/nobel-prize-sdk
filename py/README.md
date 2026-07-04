@@ -31,14 +31,16 @@ from nobelprize_sdk import NobelPrizeSDK
 client = NobelPrizeSDK()
 ```
 
-### 2. List laureates
+### 2. List laureate records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.laureate.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    laureates = client.Laureate().list({})
+    for laureate in laureates:
+        print(laureate)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NobelPrizeSDK.test()
 
-result = client.laureate.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+laureate = client.Laureate().load({"id": "test01"})
+# laureate contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -246,7 +249,7 @@ API path: `/prize.json`
 
 ### Laureate
 
-Create an instance: `const laureate = client.laureate`
+Create an instance: `laureate = client.Laureate()`
 
 #### Operations
 
@@ -274,14 +277,14 @@ Create an instance: `const laureate = client.laureate`
 
 #### Example: List
 
-```ts
-const laureates = await client.laureate.list()
+```python
+laureates = client.Laureate().list({})
 ```
 
 
 ### Prize
 
-Create an instance: `const prize = client.prize`
+Create an instance: `prize = client.Prize()`
 
 #### Operations
 
@@ -300,8 +303,8 @@ Create an instance: `const prize = client.prize`
 
 #### Example: List
 
-```ts
-const prizes = await client.prize.list()
+```python
+prizes = client.Prize().list({})
 ```
 
 
@@ -375,7 +378,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-laureate = client.laureate
+laureate = client.Laureate()
 laureate.load({"id": "example_id"})
 
 # laureate.data_get() now returns the loaded laureate data

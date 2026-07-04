@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## LaureateEntity
 
 ```python
-laureate = client.laureate
+laureate = client.Laureate()
 ```
 
 ### Fields
@@ -112,7 +112,9 @@ laureate = client.laureate
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.laureate.list({})
+results = client.Laureate().list({})
+for laureate in results:
+    print(laureate)
 ```
 
 ### Common Methods
@@ -147,7 +149,7 @@ Return the entity name.
 ## PrizeEntity
 
 ```python
-prize = client.prize
+prize = client.Prize()
 ```
 
 ### Fields
@@ -166,7 +168,9 @@ prize = client.prize
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.prize.list({})
+results = client.Prize().list({})
+for prize in results:
+    print(prize)
 ```
 
 ### Common Methods

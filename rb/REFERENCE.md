@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## LaureateEntity
 
 ```ruby
-laureate = client.laureate
+laureate = client.Laureate
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ laureate = client.laureate
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.laureate.list(nil)
+results = client.Laureate.list(nil)
 ```
 
 ### Common Methods
@@ -154,7 +154,7 @@ Return the entity name.
 ## PrizeEntity
 
 ```ruby
-prize = client.prize
+prize = client.Prize
 ```
 
 ### Fields
@@ -173,7 +173,7 @@ prize = client.prize
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.prize.list(nil)
+results = client.Prize.list(nil)
 ```
 
 ### Common Methods
