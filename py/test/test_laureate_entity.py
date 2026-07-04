@@ -50,8 +50,7 @@ class TestLaureateEntity:
         laureate_ref01_ent = client.Laureate(None)
         laureate_ref01_match = {}
 
-        laureate_ref01_list_result, err = laureate_ref01_ent.list(laureate_ref01_match, None)
-        assert err is None
+        laureate_ref01_list_result = laureate_ref01_ent.list(laureate_ref01_match, None)
         assert isinstance(laureate_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _laureate_basic_setup(extra):
         "NOBELPRIZE_TEST_LAUREATE_ENTID": idmap,
         "NOBELPRIZE_TEST_LIVE": "FALSE",
         "NOBELPRIZE_TEST_EXPLAIN": "FALSE",
-        "NOBELPRIZE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _laureate_basic_setup(extra):
     if env.get("NOBELPRIZE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOBELPRIZE_APIKEY"),
             },
             extra or {},
         ])

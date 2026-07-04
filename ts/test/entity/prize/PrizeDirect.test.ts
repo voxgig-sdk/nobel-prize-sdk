@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'NOBELPRIZE_TEST_PRIZE_ENTID': {},
     'NOBELPRIZE_TEST_LIVE': 'FALSE',
-    'NOBELPRIZE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.NOBELPRIZE_TEST_LIVE
 
   if (live) {
     const client = new NobelPrizeSDK({
-      apikey: env.NOBELPRIZE_APIKEY,
     })
 
     let idmap: any = env['NOBELPRIZE_TEST_PRIZE_ENTID']

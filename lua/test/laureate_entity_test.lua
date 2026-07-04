@@ -92,7 +92,6 @@ function laureate_basic_setup(extra)
     ["NOBELPRIZE_TEST_LAUREATE_ENTID"] = idmap,
     ["NOBELPRIZE_TEST_LIVE"] = "FALSE",
     ["NOBELPRIZE_TEST_EXPLAIN"] = "FALSE",
-    ["NOBELPRIZE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function laureate_basic_setup(extra)
   if env["NOBELPRIZE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["NOBELPRIZE_APIKEY"],
       },
       extra or {},
     })

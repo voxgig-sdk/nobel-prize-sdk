@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `NobelPrizeSDK.test()`.
 ## LaureateEntity
 
 ```ts
-const laureate = client.Laureate()
+const laureate = client.laureate
 ```
 
 ### Fields
@@ -150,7 +149,7 @@ const laureate = client.Laureate()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Laureate().list()
+const results = await client.laureate.list()
 ```
 
 ### Common Methods
@@ -184,7 +183,7 @@ Return a copy of the entity options.
 ## PrizeEntity
 
 ```ts
-const prize = client.Prize()
+const prize = client.prize
 ```
 
 ### Fields
@@ -203,7 +202,7 @@ const prize = client.Prize()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Prize().list()
+const results = await client.prize.list()
 ```
 
 ### Common Methods

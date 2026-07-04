@@ -45,6 +45,7 @@ class PrizeEntity
     end
   end
 
+  # @return [Prize, Hash] the current Prize data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class PrizeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Prize fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class PrizeEntity
   
 
   
+  # List Prize items matching the given filter.
+  #
+  # @param reqmatch [PrizeListMatch, Hash, nil] match filter (any subset of Prize fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Prize>, Array] the matching Prize items; raises NobelPrizeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

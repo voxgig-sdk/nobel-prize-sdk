@@ -119,7 +119,6 @@ func laureateBasicSetup(extra map[string]any) *entityTestSetup {
 		"NOBELPRIZE_TEST_LAUREATE_ENTID": idmap,
 		"NOBELPRIZE_TEST_LIVE":      "FALSE",
 		"NOBELPRIZE_TEST_EXPLAIN":   "FALSE",
-		"NOBELPRIZE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["NOBELPRIZE_TEST_LAUREATE_ENTID"])
@@ -130,7 +129,6 @@ func laureateBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["NOBELPRIZE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["NOBELPRIZE_APIKEY"],
 			},
 			extra,
 		})

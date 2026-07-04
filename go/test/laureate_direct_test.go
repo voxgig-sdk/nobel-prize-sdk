@@ -93,14 +93,12 @@ func laureateDirectSetup(mockres any) *laureateDirectSetupResult {
 	env := envOverride(map[string]any{
 		"NOBELPRIZE_TEST_LAUREATE_ENTID": map[string]any{},
 		"NOBELPRIZE_TEST_LIVE":    "FALSE",
-		"NOBELPRIZE_APIKEY":       "NONE",
 	})
 
 	live := env["NOBELPRIZE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["NOBELPRIZE_APIKEY"],
 		}
 		client := sdk.NewNobelPrizeSDK(mergedOpts)
 

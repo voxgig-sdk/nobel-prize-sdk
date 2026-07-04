@@ -45,6 +45,7 @@ class LaureateEntity
     end
   end
 
+  # @return [Laureate, Hash] the current Laureate data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class LaureateEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Laureate fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class LaureateEntity
   
 
   
+  # List Laureate items matching the given filter.
+  #
+  # @param reqmatch [LaureateListMatch, Hash, nil] match filter (any subset of Laureate fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Laureate>, Array] the matching Laureate items; raises NobelPrizeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

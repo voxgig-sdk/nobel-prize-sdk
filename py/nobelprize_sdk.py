@@ -144,16 +144,23 @@ class NobelPrizeSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class NobelPrizeSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class NobelPrizeSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def laureate(self):
+        """Idiomatic facade: client.laureate.list() / client.laureate.load({"id": ...})."""
+        from entity.laureate_entity import LaureateEntity
+        cached = getattr(self, "_laureate", None)
+        if cached is None:
+            cached = LaureateEntity(self, None)
+            self._laureate = cached
+        return cached
 
     def Laureate(self, data=None):
+        # Deprecated: use client.laureate instead.
         from entity.laureate_entity import LaureateEntity
         return LaureateEntity(self, data)
 
 
+    @property
+    def prize(self):
+        """Idiomatic facade: client.prize.list() / client.prize.load({"id": ...})."""
+        from entity.prize_entity import PrizeEntity
+        cached = getattr(self, "_prize", None)
+        if cached is None:
+            cached = PrizeEntity(self, None)
+            self._prize = cached
+        return cached
+
     def Prize(self, data=None):
+        # Deprecated: use client.prize instead.
         from entity.prize_entity import PrizeEntity
         return PrizeEntity(self, data)
 

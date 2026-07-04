@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:laureate():list() / client:laureate():load({ id = ... })
+function NobelPrizeSDK:laureate(data)
+  local EntityMod = require("entity.laureate_entity")
+  if data == nil then
+    if self._laureate == nil then
+      self._laureate = EntityMod.new(self, nil)
+    end
+    return self._laureate
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:laureate() instead.
 function NobelPrizeSDK:Laureate(data)
   local EntityMod = require("entity.laureate_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:prize():list() / client:prize():load({ id = ... })
+function NobelPrizeSDK:prize(data)
+  local EntityMod = require("entity.prize_entity")
+  if data == nil then
+    if self._prize == nil then
+      self._prize = EntityMod.new(self, nil)
+    end
+    return self._prize
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:prize() instead.
 function NobelPrizeSDK:Prize(data)
   local EntityMod = require("entity.prize_entity")
   return EntityMod.new(self, data)

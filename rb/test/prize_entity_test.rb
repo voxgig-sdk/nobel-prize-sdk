@@ -43,8 +43,7 @@ class PrizeEntityTest < Minitest::Test
     prize_ref01_ent = client.Prize(nil)
     prize_ref01_match = {}
 
-    prize_ref01_list_result, err = prize_ref01_ent.list(prize_ref01_match, nil)
-    assert_nil err
+    prize_ref01_list_result = prize_ref01_ent.list(prize_ref01_match, nil)
     assert prize_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def prize_basic_setup(extra)
     "NOBELPRIZE_TEST_PRIZE_ENTID" => idmap,
     "NOBELPRIZE_TEST_LIVE" => "FALSE",
     "NOBELPRIZE_TEST_EXPLAIN" => "FALSE",
-    "NOBELPRIZE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def prize_basic_setup(extra)
   if env["NOBELPRIZE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NOBELPRIZE_APIKEY"],
       },
       extra || {},
     ])

@@ -3,6 +3,8 @@
 import { LaureateEntity } from './entity/LaureateEntity'
 import { PrizeEntity } from './entity/PrizeEntity'
 
+export type * from './NobelPrizeTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class NobelPrizeSDK {
 
 
 
+  _laureate?: LaureateEntity
+
+  // Idiomatic facade: `client.laureate.list()` / `client.laureate.load({ id })`.
+  get laureate(): LaureateEntity {
+    return (this._laureate ??= new LaureateEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.laureate` instead. */
   Laureate(data?: any) {
     const self = this
     return new LaureateEntity(self,data)
   }
 
 
+  _prize?: PrizeEntity
+
+  // Idiomatic facade: `client.prize.list()` / `client.prize.load({ id })`.
+  get prize(): PrizeEntity {
+    return (this._prize ??= new PrizeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.prize` instead. */
   Prize(data?: any) {
     const self = this
     return new PrizeEntity(self,data)

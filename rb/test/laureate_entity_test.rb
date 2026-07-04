@@ -43,8 +43,7 @@ class LaureateEntityTest < Minitest::Test
     laureate_ref01_ent = client.Laureate(nil)
     laureate_ref01_match = {}
 
-    laureate_ref01_list_result, err = laureate_ref01_ent.list(laureate_ref01_match, nil)
-    assert_nil err
+    laureate_ref01_list_result = laureate_ref01_ent.list(laureate_ref01_match, nil)
     assert laureate_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def laureate_basic_setup(extra)
     "NOBELPRIZE_TEST_LAUREATE_ENTID" => idmap,
     "NOBELPRIZE_TEST_LIVE" => "FALSE",
     "NOBELPRIZE_TEST_EXPLAIN" => "FALSE",
-    "NOBELPRIZE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def laureate_basic_setup(extra)
   if env["NOBELPRIZE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NOBELPRIZE_APIKEY"],
       },
       extra || {},
     ])

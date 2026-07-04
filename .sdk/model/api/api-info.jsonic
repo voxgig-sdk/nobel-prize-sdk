@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Nobel Prize API"
         url: "https://www.nobelprize.org/organization/developer-zone-2/"

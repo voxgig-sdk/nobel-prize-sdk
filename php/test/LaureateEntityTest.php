@@ -50,8 +50,7 @@ class LaureateEntityTest extends TestCase
         $laureate_ref01_ent = $client->Laureate(null);
         $laureate_ref01_match = [];
 
-        [$laureate_ref01_list_result, $err] = $laureate_ref01_ent->list($laureate_ref01_match, null);
-        $this->assertNull($err);
+        $laureate_ref01_list_result = $laureate_ref01_ent->list($laureate_ref01_match, null);
         $this->assertIsArray($laureate_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function laureate_basic_setup($extra)
         "NOBELPRIZE_TEST_LAUREATE_ENTID" => $idmap,
         "NOBELPRIZE_TEST_LIVE" => "FALSE",
         "NOBELPRIZE_TEST_EXPLAIN" => "FALSE",
-        "NOBELPRIZE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function laureate_basic_setup($extra)
     if ($env["NOBELPRIZE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["NOBELPRIZE_APIKEY"],
             ],
             $extra ?? [],
         ]);

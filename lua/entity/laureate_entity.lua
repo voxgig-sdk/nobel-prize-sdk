@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch LaureateListMatch
+---@param ctrl? table
+---@return Laureate[]
+---@return string? err
 function LaureateEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

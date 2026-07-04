@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## LaureateEntity
 
 ```lua
-local laureate = client:Laureate(nil)
+local laureate = client:laureate(nil)
 ```
 
 ### Fields
@@ -116,7 +115,7 @@ local laureate = client:Laureate(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Laureate():list()
+local results, err = client:laureate():list()
 ```
 
 ### Common Methods
@@ -152,7 +151,7 @@ Return the entity name.
 ## PrizeEntity
 
 ```lua
-local prize = client:Prize(nil)
+local prize = client:prize(nil)
 ```
 
 ### Fields
@@ -171,7 +170,7 @@ local prize = client:Prize(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Prize():list()
+local results, err = client:prize():list()
 ```
 
 ### Common Methods

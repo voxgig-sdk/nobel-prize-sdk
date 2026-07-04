@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Laureate,
+  LaureateListMatch,
+} from '../NobelPrizeTypes'
 
 // TODO: needs Entity superclass
-class LaureateEntity extends NobelPrizeEntityBase {
+class LaureateEntity extends NobelPrizeEntityBase<Laureate> {
 
   constructor(client: NobelPrizeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class LaureateEntity extends NobelPrizeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: LaureateListMatch, ctrl?: Control): Promise<Laureate[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class LaureateEntity extends NobelPrizeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Laureate[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

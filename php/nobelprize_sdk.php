@@ -103,7 +103,7 @@ class NobelPrizeSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class NobelPrizeSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class NobelPrizeSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,31 +216,53 @@ class NobelPrizeSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Laureate($data = null)
+    private $_laureate = null;
+
+    // Idiomatic facade: $client->laureate()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Laureate() (PHP method
+    // names are case-insensitive).
+    public function laureate($data = null)
     {
         require_once __DIR__ . '/entity/laureate_entity.php';
+        if ($data === null) {
+            if ($this->_laureate === null) {
+                $this->_laureate = new LaureateEntity($this, null);
+            }
+            return $this->_laureate;
+        }
         return new LaureateEntity($this, $data);
     }
 
 
-    public function Prize($data = null)
+    private $_prize = null;
+
+    // Idiomatic facade: $client->prize()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Prize() (PHP method
+    // names are case-insensitive).
+    public function prize($data = null)
     {
         require_once __DIR__ . '/entity/prize_entity.php';
+        if ($data === null) {
+            if ($this->_prize === null) {
+                $this->_prize = new PrizeEntity($this, null);
+            }
+            return $this->_prize;
+        }
         return new PrizeEntity($this, $data);
     }
 

@@ -20,9 +20,6 @@ class NobelPrizeConfig
             ],
             "options" => [
                 "base" => "https://api.nobelprize.org/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
