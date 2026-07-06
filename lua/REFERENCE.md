@@ -94,19 +94,19 @@ local laureate = client:Laureate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | ``$STRING`` | No |  |
-| `born_city` | ``$STRING`` | No |  |
-| `born_country` | ``$STRING`` | No |  |
-| `born_country_code` | ``$STRING`` | No |  |
-| `died` | ``$STRING`` | No |  |
-| `died_city` | ``$STRING`` | No |  |
-| `died_country` | ``$STRING`` | No |  |
-| `died_country_code` | ``$STRING`` | No |  |
-| `firstname` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `prize` | ``$ARRAY`` | No |  |
-| `surname` | ``$STRING`` | No |  |
+| `born` | `string` | No |  |
+| `born_city` | `string` | No |  |
+| `born_country` | `string` | No |  |
+| `born_country_code` | `string` | No |  |
+| `died` | `string` | No |  |
+| `died_city` | `string` | No |  |
+| `died_country` | `string` | No |  |
+| `died_country_code` | `string` | No |  |
+| `firstname` | `string` | No |  |
+| `gender` | `string` | No |  |
+| `id` | `string` | No |  |
+| `prize` | `table` | No |  |
+| `surname` | `string` | No |  |
 
 ### Operations
 
@@ -158,10 +158,10 @@ local prize = client:Prize(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `laureate` | ``$ARRAY`` | No |  |
-| `overall_motivation` | ``$STRING`` | No |  |
-| `year` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `laureate` | `table` | No |  |
+| `overall_motivation` | `string` | No |  |
+| `year` | `string` | No |  |
 
 ### Operations
 

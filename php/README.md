@@ -4,6 +4,8 @@
 
 The PHP SDK for the NobelPrize API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Laureate()` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,10 +38,41 @@ try {
     // list() returns an array of Laureate records — iterate directly.
     $laureates = $client->Laureate()->list();
     foreach ($laureates as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["born"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $laureates = $client->Laureate()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -63,7 +96,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -84,16 +120,13 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = NobelPrizeSDK::test([
-    "entity" => ["laureate" => ["test01" => ["id" => "test01"]]],
-]);
+$client = NobelPrizeSDK::test();
 
-// load() returns the bare mock record (throws on error).
-$laureate = $client->Laureate()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$laureate = $client->Laureate()->list();
 print_r($laureate);
 ```
 
@@ -182,11 +215,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -268,19 +297,19 @@ Create an instance: `$laureate = $client->Laureate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `born` | ``$STRING`` |  |
-| `born_city` | ``$STRING`` |  |
-| `born_country` | ``$STRING`` |  |
-| `born_country_code` | ``$STRING`` |  |
-| `died` | ``$STRING`` |  |
-| `died_city` | ``$STRING`` |  |
-| `died_country` | ``$STRING`` |  |
-| `died_country_code` | ``$STRING`` |  |
-| `firstname` | ``$STRING`` |  |
-| `gender` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `prize` | ``$ARRAY`` |  |
-| `surname` | ``$STRING`` |  |
+| `born` | `string` |  |
+| `born_city` | `string` |  |
+| `born_country` | `string` |  |
+| `born_country_code` | `string` |  |
+| `died` | `string` |  |
+| `died_city` | `string` |  |
+| `died_country` | `string` |  |
+| `died_country_code` | `string` |  |
+| `firstname` | `string` |  |
+| `gender` | `string` |  |
+| `id` | `string` |  |
+| `prize` | `array` |  |
+| `surname` | `string` |  |
 
 #### Example: List
 
@@ -304,10 +333,10 @@ Create an instance: `$prize = $client->Prize();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | ``$STRING`` |  |
-| `laureate` | ``$ARRAY`` |  |
-| `overall_motivation` | ``$STRING`` |  |
-| `year` | ``$STRING`` |  |
+| `category` | `string` |  |
+| `laureate` | `array` |  |
+| `overall_motivation` | `string` |  |
+| `year` | `string` |  |
 
 #### Example: List
 
@@ -317,12 +346,16 @@ $prizes = $client->Prize()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -339,8 +372,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -384,15 +418,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $laureate = $client->Laureate();
-$laureate->load(["id" => "example_id"]);
+$laureate->list();
 
-// $laureate->dataGet() now returns the loaded laureate data
-// $laureate->matchGet() returns the last match criteria
+// $laureate->data_get() now returns the laureate data from the last list
+// $laureate->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

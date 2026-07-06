@@ -8,7 +8,7 @@ Complete API reference for the NobelPrize PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/nobel-prize_sdk.php';
+require_once __DIR__ . '/nobelprize_sdk.php';
 
 $client = new NobelPrizeSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `LaureateEntity` instance. Pass `null` for no initial data.
 
 Create a new `PrizeEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): NobelPrizeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,45 +96,45 @@ $laureate = $client->Laureate();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | ``$STRING`` | No |  |
-| `born_city` | ``$STRING`` | No |  |
-| `born_country` | ``$STRING`` | No |  |
-| `born_country_code` | ``$STRING`` | No |  |
-| `died` | ``$STRING`` | No |  |
-| `died_city` | ``$STRING`` | No |  |
-| `died_country` | ``$STRING`` | No |  |
-| `died_country_code` | ``$STRING`` | No |  |
-| `firstname` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `prize` | ``$ARRAY`` | No |  |
-| `surname` | ``$STRING`` | No |  |
+| `born` | `string` | No |  |
+| `born_city` | `string` | No |  |
+| `born_country` | `string` | No |  |
+| `born_country_code` | `string` | No |  |
+| `died` | `string` | No |  |
+| `died_city` | `string` | No |  |
+| `died_country` | `string` | No |  |
+| `died_country_code` | `string` | No |  |
+| `firstname` | `string` | No |  |
+| `gender` | `string` | No |  |
+| `id` | `string` | No |  |
+| `prize` | `array` | No |  |
+| `surname` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Laureate()->list([]);
+$results = $client->Laureate()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -143,7 +143,7 @@ Set the entity match criteria.
 Create a new `LaureateEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -160,36 +160,36 @@ $prize = $client->Prize();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `laureate` | ``$ARRAY`` | No |  |
-| `overall_motivation` | ``$STRING`` | No |  |
-| `year` | ``$STRING`` | No |  |
+| `category` | `string` | No |  |
+| `laureate` | `array` | No |  |
+| `overall_motivation` | `string` | No |  |
+| `year` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Prize()->list([]);
+$results = $client->Prize()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -198,7 +198,7 @@ Set the entity match criteria.
 Create a new `PrizeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

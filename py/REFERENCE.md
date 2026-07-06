@@ -8,7 +8,7 @@ Complete API reference for the NobelPrize Python SDK.
 ### Constructor
 
 ```python
-from nobel-prize_sdk import NobelPrizeSDK
+from nobelprize_sdk import NobelPrizeSDK
 
 client = NobelPrizeSDK(options)
 ```
@@ -91,28 +91,28 @@ laureate = client.Laureate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | ``$STRING`` | No |  |
-| `born_city` | ``$STRING`` | No |  |
-| `born_country` | ``$STRING`` | No |  |
-| `born_country_code` | ``$STRING`` | No |  |
-| `died` | ``$STRING`` | No |  |
-| `died_city` | ``$STRING`` | No |  |
-| `died_country` | ``$STRING`` | No |  |
-| `died_country_code` | ``$STRING`` | No |  |
-| `firstname` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `prize` | ``$ARRAY`` | No |  |
-| `surname` | ``$STRING`` | No |  |
+| `born` | `str` | No |  |
+| `born_city` | `str` | No |  |
+| `born_country` | `str` | No |  |
+| `born_country_code` | `str` | No |  |
+| `died` | `str` | No |  |
+| `died_city` | `str` | No |  |
+| `died_country` | `str` | No |  |
+| `died_country_code` | `str` | No |  |
+| `firstname` | `str` | No |  |
+| `gender` | `str` | No |  |
+| `id` | `str` | No |  |
+| `prize` | `list` | No |  |
+| `surname` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Laureate().list({})
+results = client.Laureate().list()
 for laureate in results:
     print(laureate)
 ```
@@ -156,19 +156,19 @@ prize = client.Prize()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `laureate` | ``$ARRAY`` | No |  |
-| `overall_motivation` | ``$STRING`` | No |  |
-| `year` | ``$STRING`` | No |  |
+| `category` | `str` | No |  |
+| `laureate` | `list` | No |  |
+| `overall_motivation` | `str` | No |  |
+| `year` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Prize().list({})
+results = client.Prize().list()
 for prize in results:
     print(prize)
 ```

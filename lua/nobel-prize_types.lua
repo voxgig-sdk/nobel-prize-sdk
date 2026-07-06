@@ -22,6 +22,19 @@
 ---@field surname? string
 
 ---@class LaureateListMatch
+---@field born? string
+---@field born_city? string
+---@field born_country? string
+---@field born_country_code? string
+---@field died? string
+---@field died_city? string
+---@field died_country? string
+---@field died_country_code? string
+---@field firstname? string
+---@field gender? string
+---@field id? string
+---@field prize? table
+---@field surname? string
 
 ---@class Prize
 ---@field category? string
@@ -30,6 +43,10 @@
 ---@field year? string
 
 ---@class PrizeListMatch
+---@field category? string
+---@field laureate? table
+---@field overall_motivation? string
+---@field year? string
 
 local M = {}
 

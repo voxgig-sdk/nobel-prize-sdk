@@ -8,7 +8,7 @@ Complete API reference for the NobelPrize Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'nobel-prize_sdk'
+require_relative 'NobelPrize_sdk'
 
 client = NobelPrizeSDK.new(options)
 ```
@@ -97,28 +97,28 @@ laureate = client.Laureate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | ``$STRING`` | No |  |
-| `born_city` | ``$STRING`` | No |  |
-| `born_country` | ``$STRING`` | No |  |
-| `born_country_code` | ``$STRING`` | No |  |
-| `died` | ``$STRING`` | No |  |
-| `died_city` | ``$STRING`` | No |  |
-| `died_country` | ``$STRING`` | No |  |
-| `died_country_code` | ``$STRING`` | No |  |
-| `firstname` | ``$STRING`` | No |  |
-| `gender` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `prize` | ``$ARRAY`` | No |  |
-| `surname` | ``$STRING`` | No |  |
+| `born` | `String` | No |  |
+| `born_city` | `String` | No |  |
+| `born_country` | `String` | No |  |
+| `born_country_code` | `String` | No |  |
+| `died` | `String` | No |  |
+| `died_city` | `String` | No |  |
+| `died_country` | `String` | No |  |
+| `died_country_code` | `String` | No |  |
+| `firstname` | `String` | No |  |
+| `gender` | `String` | No |  |
+| `id` | `String` | No |  |
+| `prize` | `Array` | No |  |
+| `surname` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Laureate.list(nil)
+results = client.Laureate.list
 ```
 
 ### Common Methods
@@ -161,19 +161,19 @@ prize = client.Prize
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `laureate` | ``$ARRAY`` | No |  |
-| `overall_motivation` | ``$STRING`` | No |  |
-| `year` | ``$STRING`` | No |  |
+| `category` | `String` | No |  |
+| `laureate` | `Array` | No |  |
+| `overall_motivation` | `String` | No |  |
+| `year` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Prize.list(nil)
+results = client.Prize.list
 ```
 
 ### Common Methods

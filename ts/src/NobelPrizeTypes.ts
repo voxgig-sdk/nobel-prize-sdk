@@ -21,7 +21,21 @@ export interface Laureate {
   surname?: string
 }
 
-export type LaureateListMatch = Partial<Laureate>
+export interface LaureateListMatch {
+  born?: string
+  born_city?: string
+  born_country?: string
+  born_country_code?: string
+  died?: string
+  died_city?: string
+  died_country?: string
+  died_country_code?: string
+  firstname?: string
+  gender?: string
+  id?: string
+  prize?: any[]
+  surname?: string
+}
 
 export interface Prize {
   category?: string
@@ -30,5 +44,10 @@ export interface Prize {
   year?: string
 }
 
-export type PrizeListMatch = Partial<Prize>
+export interface PrizeListMatch {
+  category?: string
+  laureate?: any[]
+  overall_motivation?: string
+  year?: string
+}
 

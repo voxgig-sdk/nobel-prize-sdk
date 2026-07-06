@@ -66,8 +66,12 @@ class PrizeEntity:
     
 
     
-    def list(self, reqmatch: PrizeListMatch, ctrl=None) -> list[Prize]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Prize]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Prize().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

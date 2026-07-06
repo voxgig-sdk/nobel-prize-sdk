@@ -221,13 +221,13 @@ class NobelPrizeSDK:
 
 
     def Laureate(self, data=None) -> "LaureateEntity":
-        """Entity factory: client.Laureate().list({}) / client.Laureate().load({"id": ...})."""
+        """Entity factory: client.Laureate().list() / client.Laureate().load({"id": ...})."""
         from entity.laureate_entity import LaureateEntity
         return LaureateEntity(self, data)
 
 
     def Prize(self, data=None) -> "PrizeEntity":
-        """Entity factory: client.Prize().list({}) / client.Prize().load({"id": ...})."""
+        """Entity factory: client.Prize().list() / client.Prize().load({"id": ...})."""
         from entity.prize_entity import PrizeEntity
         return PrizeEntity(self, data)
 

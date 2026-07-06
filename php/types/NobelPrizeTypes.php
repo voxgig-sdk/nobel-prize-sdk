@@ -30,7 +30,7 @@ class Laureate
     public ?string $surname = null;
 }
 
-/** Match filter for Laureate#list (any subset of Laureate fields). */
+/** Request payload for Laureate#list. */
 class LaureateListMatch
 {
     public ?string $born = null;
@@ -57,7 +57,7 @@ class Prize
     public ?string $year = null;
 }
 
-/** Match filter for Prize#list (any subset of Prize fields). */
+/** Request payload for Prize#list. */
 class PrizeListMatch
 {
     public ?string $category = null;

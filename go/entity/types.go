@@ -25,8 +25,7 @@ type Laureate struct {
 	Surname *string `json:"surname,omitempty"`
 }
 
-// LaureateListMatch mirrors the laureate fields as an all-optional match
-// filter (Go analog of Partial<Laureate>).
+// LaureateListMatch is the typed request payload for Laureate.ListTyped.
 type LaureateListMatch struct {
 	Born *string `json:"born,omitempty"`
 	BornCity *string `json:"born_city,omitempty"`
@@ -51,8 +50,7 @@ type Prize struct {
 	Year *string `json:"year,omitempty"`
 }
 
-// PrizeListMatch mirrors the prize fields as an all-optional match
-// filter (Go analog of Partial<Prize>).
+// PrizeListMatch is the typed request payload for Prize.ListTyped.
 type PrizeListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Laureate *[]any `json:"laureate,omitempty"`

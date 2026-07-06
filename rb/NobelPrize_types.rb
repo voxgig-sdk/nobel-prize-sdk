@@ -65,7 +65,7 @@ Laureate = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Laureate#list (any subset of Laureate fields).
+# Request payload for Laureate#list.
 #
 # @!attribute [rw] born
 #   @return [String, nil]
@@ -143,7 +143,7 @@ Prize = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Prize#list (any subset of Prize fields).
+# Request payload for Prize#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
