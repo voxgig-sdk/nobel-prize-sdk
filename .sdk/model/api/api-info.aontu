@@ -24,10 +24,10 @@ main: {
           url: "https://api.nobelprize.org/2.1"
         }
       ]
+      summary: "Provides information about Nobel Prizes and Laureates."
       termsOfService: "https://www.nobelprize.org/organization/developer-zone-2/"
       title: "Nobel Prize API"
       version: "2.1"
+      website: "https://nobelprize.org"
     }
   }
-}
-

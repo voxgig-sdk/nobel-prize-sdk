@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -457,6 +454,7 @@
           "name": "Nobel Prize API License",
           "url": "https://www.nobelprize.org/organization/developer-zone-2/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production API Server (v1)",
@@ -467,9 +465,11 @@
             "url": "https://api.nobelprize.org/2.1"
           }
         ],
+        "summary": "Provides information about Nobel Prizes and Laureates.",
         "termsOfService": "https://www.nobelprize.org/organization/developer-zone-2/",
         "title": "Nobel Prize API",
-        "version": "2.1"
+        "version": "2.1",
+        "website": "https://nobelprize.org"
       },
       "option": {},
       "target": {
@@ -522,6 +522,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -572,6 +575,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

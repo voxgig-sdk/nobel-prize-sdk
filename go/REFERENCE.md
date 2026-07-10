@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 laureate := client.Laureate(nil)
+fmt.Println(laureate.GetName()) // "laureate"
 ```
 
 ### Fields
@@ -123,6 +124,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Laureate(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -153,6 +158,7 @@ Return the entity name.
 
 ```go
 prize := client.Prize(nil)
+fmt.Println(prize.GetName()) // "prize"
 ```
 
 ### Fields
@@ -172,6 +178,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Prize(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
