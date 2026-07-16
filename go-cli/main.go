@@ -27,7 +27,20 @@ func main() {
 }
 
 func run(args []string, in io.Reader, out, errOut io.Writer) int {
-	client := sdk.NewNobelPrizeSDK(nil)
+	// Configure from the environment: NOBEL_PRIZE_APIKEY carries the API key and
+	// NOBEL_PRIZE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("NOBEL_PRIZE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("NOBEL_PRIZE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewNobelPrizeSDK(opts)
 
 	r, err := eng.NewRegistry()
 	if err != nil {
