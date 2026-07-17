@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- NobelPrize SDK exists test
 
 local sdk = require("nobel-prize_sdk")
 
