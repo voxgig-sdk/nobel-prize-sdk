@@ -35,7 +35,9 @@ const client = new NobelPrizeSDK()
 
 ### 2. List laureate records
 
-`list()` resolves to an array of Laureate objects — iterate it directly:
+`list()` resolves to an array of Laureate ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const laureates = await client.Laureate().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = NobelPrizeSDK.test()
 
 const laureate = await client.Laureate().list()
-// laureate is a bare entity populated with mock response data
+// laureate is the entity, populated with mock response data
+// — call laureate.data() for the record itself
 console.log(laureate)
 ```
 
@@ -286,17 +289,17 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `born` |  |
-| `born_city` |  |
-| `born_country` |  |
-| `born_country_code` |  |
+| `bornCity` |  |
+| `bornCountry` |  |
+| `bornCountryCode` |  |
 | `died` |  |
-| `died_city` |  |
-| `died_country` |  |
-| `died_country_code` |  |
+| `diedCity` |  |
+| `diedCountry` |  |
+| `diedCountryCode` |  |
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `prize` |  |
+| `prizes` |  |
 | `surname` |  |
 
 Operations: list.
@@ -308,8 +311,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `laureate` |  |
-| `overall_motivation` |  |
+| `laureates` |  |
+| `overallMotivation` |  |
 | `year` |  |
 
 Operations: list.
@@ -336,17 +339,17 @@ Create an instance: `const laureate = client.Laureate()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `string` |  |
-| `born_city` | `string` |  |
-| `born_country` | `string` |  |
-| `born_country_code` | `string` |  |
+| `bornCity` | `string` |  |
+| `bornCountry` | `string` |  |
+| `bornCountryCode` | `string` |  |
 | `died` | `string` |  |
-| `died_city` | `string` |  |
-| `died_country` | `string` |  |
-| `died_country_code` | `string` |  |
+| `diedCity` | `string` |  |
+| `diedCountry` | `string` |  |
+| `diedCountryCode` | `string` |  |
 | `firstname` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `string` |  |
-| `prize` | `any[]` |  |
+| `prizes` | `any[]` |  |
 | `surname` | `string` |  |
 
 #### Example: List
@@ -371,8 +374,8 @@ Create an instance: `const prize = client.Prize()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `laureate` | `any[]` |  |
-| `overall_motivation` | `string` |  |
+| `laureates` | `any[]` |  |
+| `overallMotivation` | `string` |  |
 | `year` | `string` |  |
 
 #### Example: List

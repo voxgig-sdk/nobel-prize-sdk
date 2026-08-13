@@ -8,12 +8,14 @@ guide: {
   entity: laureate: {
     path: "/laureate.json": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.laureates`")|top
     }
   }
 
   entity: prize: {
     path: "/prize.json": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.prizes`")|top
     }
   }
 

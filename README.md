@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NobelPrizeSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NobelPrizeSDK.test({
+  entity: {
+    laureate: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const laureates = await client.Laureate().list()
-// laureates is an array of bare Laureate records populated with mock data
+// laureates is an array of Laureate entities, populated with mock data
+// — call laureates[0].data() for the record itself
 console.log(laureates)
 ```
 
@@ -110,7 +119,7 @@ import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize'
 
 const client = new NobelPrizeSDK()
 
-// List all laureates (returns Laureate[])
+// List all laureates (returns LaureateEntity[] — .data() for the record)
 const laureates = await client.Laureate().list()
 for (const laureate of laureates) {
   console.log(laureate)
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.nobelprize.org/organization/developer-zone-2/](https://www.nobelprize.org/organization/developer-zone-2/)
 

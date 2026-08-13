@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ NobelPrizeUtility::setRegistrar(function (NobelPrizeUtility $u): void {
     $u->prepare_params = [NobelPrizePrepareParams::class, 'call'];
     $u->prepare_path = [NobelPrizePreparePath::class, 'call'];
     $u->prepare_query = [NobelPrizePrepareQuery::class, 'call'];
+    $u->graphql_body = [NobelPrizeGraphql::class, 'body'];
+    $u->graphql_errors = [NobelPrizeGraphql::class, 'errors'];
     $u->result_basic = [NobelPrizeResultBasic::class, 'call'];
     $u->result_body = [NobelPrizeResultBody::class, 'call'];
     $u->result_headers = [NobelPrizeResultHeaders::class, 'call'];

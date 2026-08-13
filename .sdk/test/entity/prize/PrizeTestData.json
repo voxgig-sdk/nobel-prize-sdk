@@ -3,20 +3,20 @@
     "prize": {
       "PRIZE00": {
         "category": "s28",
-        "laureate": [],
-        "overall_motivation": "s2a",
+        "laureates": [],
+        "overallMotivation": "s2a",
         "year": "s2b"
       },
       "PRIZE01": {
         "category": "s50",
-        "laureate": [],
-        "overall_motivation": "s52",
+        "laureates": [],
+        "overallMotivation": "s52",
         "year": "s53"
       },
       "PRIZE02": {
         "category": "s78",
-        "laureate": [],
-        "overall_motivation": "s7a",
+        "laureates": [],
+        "overallMotivation": "s7a",
         "year": "s7b"
       }
     }
@@ -25,8 +25,8 @@
     "prize": {
       "prize_ref01": {
         "category": "sa0",
-        "laureate": [],
-        "overall_motivation": "sa2",
+        "laureates": [],
+        "overallMotivation": "sa2",
         "year": "sa3"
       }
     }

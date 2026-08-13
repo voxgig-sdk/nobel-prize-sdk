@@ -11,12 +11,12 @@ main: kit: entity: prize: {
       type: "`$STRING`"
     }
     {
-      name: "laureate"
+      name: "laureates"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "overall_motivation"
+      name: "overallMotivation"
       req: false
       type: "`$STRING`"
     }
@@ -64,7 +64,7 @@ main: kit: entity: prize: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.prizes`"
           }
         }
       ]

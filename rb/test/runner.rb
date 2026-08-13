@@ -23,8 +23,8 @@ module NobelPrizeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("NOBELPRIZE_TEST_LIVE")
-    override = getenv("NOBELPRIZE_TEST_OVERRIDE")
+    live = getenv("NOBEL_PRIZE_TEST_LIVE")
+    override = getenv("NOBEL_PRIZE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module NobelPrizeTestRunner
       end
     end
 
-    explain = getenv("NOBELPRIZE_TEST_EXPLAIN")
-    m["NOBELPRIZE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("NOBEL_PRIZE_TEST_EXPLAIN")
+    m["NOBEL_PRIZE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

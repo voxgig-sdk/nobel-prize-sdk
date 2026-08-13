@@ -61,11 +61,11 @@ function laureate_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["NOBELPRIZE_TEST_LAUREATE_ENTID"] = {},
-    ["NOBELPRIZE_TEST_LIVE"] = "FALSE",
+    ["NOBEL_PRIZE_TEST_LAUREATE_ENTID"] = {},
+    ["NOBEL_PRIZE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["NOBELPRIZE_TEST_LIVE"] == "TRUE"
+  local live = env["NOBEL_PRIZE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

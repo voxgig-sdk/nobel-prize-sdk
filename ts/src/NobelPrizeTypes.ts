@@ -7,47 +7,47 @@
 
 export interface Laureate {
   born?: string
-  born_city?: string
-  born_country?: string
-  born_country_code?: string
+  bornCity?: string
+  bornCountry?: string
+  bornCountryCode?: string
   died?: string
-  died_city?: string
-  died_country?: string
-  died_country_code?: string
+  diedCity?: string
+  diedCountry?: string
+  diedCountryCode?: string
   firstname?: string
   gender?: string
   id?: string
-  prize?: any[]
+  prizes?: any[]
   surname?: string
 }
 
 export interface LaureateListMatch {
   born?: string
-  born_city?: string
-  born_country?: string
-  born_country_code?: string
+  bornCity?: string
+  bornCountry?: string
+  bornCountryCode?: string
   died?: string
-  died_city?: string
-  died_country?: string
-  died_country_code?: string
+  diedCity?: string
+  diedCountry?: string
+  diedCountryCode?: string
   firstname?: string
   gender?: string
   id?: string
-  prize?: any[]
+  prizes?: any[]
   surname?: string
 }
 
 export interface Prize {
   category?: string
-  laureate?: any[]
-  overall_motivation?: string
+  laureates?: any[]
+  overallMotivation?: string
   year?: string
 }
 
 export interface PrizeListMatch {
   category?: string
-  laureate?: any[]
-  overall_motivation?: string
+  laureates?: any[]
+  overallMotivation?: string
   year?: string
 }
 

@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = NobelPrizeSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $laureate = $client->Laureate()->list();
 print_r($laureate);
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -248,17 +249,17 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `born` |  |
-| `born_city` |  |
-| `born_country` |  |
-| `born_country_code` |  |
+| `bornCity` |  |
+| `bornCountry` |  |
+| `bornCountryCode` |  |
 | `died` |  |
-| `died_city` |  |
-| `died_country` |  |
-| `died_country_code` |  |
+| `diedCity` |  |
+| `diedCountry` |  |
+| `diedCountryCode` |  |
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `prize` |  |
+| `prizes` |  |
 | `surname` |  |
 
 Operations: List.
@@ -270,8 +271,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `laureate` |  |
-| `overall_motivation` |  |
+| `laureates` |  |
+| `overallMotivation` |  |
 | `year` |  |
 
 Operations: List.
@@ -298,17 +299,17 @@ Create an instance: `$laureate = $client->Laureate();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `string` |  |
-| `born_city` | `string` |  |
-| `born_country` | `string` |  |
-| `born_country_code` | `string` |  |
+| `bornCity` | `string` |  |
+| `bornCountry` | `string` |  |
+| `bornCountryCode` | `string` |  |
 | `died` | `string` |  |
-| `died_city` | `string` |  |
-| `died_country` | `string` |  |
-| `died_country_code` | `string` |  |
+| `diedCity` | `string` |  |
+| `diedCountry` | `string` |  |
+| `diedCountryCode` | `string` |  |
 | `firstname` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `string` |  |
-| `prize` | `array` |  |
+| `prizes` | `array` |  |
 | `surname` | `string` |  |
 
 #### Example: List
@@ -334,8 +335,8 @@ Create an instance: `$prize = $client->Prize();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `laureate` | `array` |  |
-| `overall_motivation` | `string` |  |
+| `laureates` | `array` |  |
+| `overallMotivation` | `string` |  |
 | `year` | `string` |  |
 
 #### Example: List

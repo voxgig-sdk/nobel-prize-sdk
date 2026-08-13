@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# NobelPrize SDK exists test
 
 import pytest
 from nobelprize_sdk import NobelPrizeSDK

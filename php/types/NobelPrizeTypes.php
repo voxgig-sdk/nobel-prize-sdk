@@ -16,17 +16,17 @@ declare(strict_types=1);
 class Laureate
 {
     public ?string $born = null;
-    public ?string $born_city = null;
-    public ?string $born_country = null;
-    public ?string $born_country_code = null;
+    public ?string $bornCity = null;
+    public ?string $bornCountry = null;
+    public ?string $bornCountryCode = null;
     public ?string $died = null;
-    public ?string $died_city = null;
-    public ?string $died_country = null;
-    public ?string $died_country_code = null;
+    public ?string $diedCity = null;
+    public ?string $diedCountry = null;
+    public ?string $diedCountryCode = null;
     public ?string $firstname = null;
     public ?string $gender = null;
     public ?string $id = null;
-    public ?array $prize = null;
+    public ?array $prizes = null;
     public ?string $surname = null;
 }
 
@@ -34,17 +34,17 @@ class Laureate
 class LaureateListMatch
 {
     public ?string $born = null;
-    public ?string $born_city = null;
-    public ?string $born_country = null;
-    public ?string $born_country_code = null;
+    public ?string $bornCity = null;
+    public ?string $bornCountry = null;
+    public ?string $bornCountryCode = null;
     public ?string $died = null;
-    public ?string $died_city = null;
-    public ?string $died_country = null;
-    public ?string $died_country_code = null;
+    public ?string $diedCity = null;
+    public ?string $diedCountry = null;
+    public ?string $diedCountryCode = null;
     public ?string $firstname = null;
     public ?string $gender = null;
     public ?string $id = null;
-    public ?array $prize = null;
+    public ?array $prizes = null;
     public ?string $surname = null;
 }
 
@@ -52,8 +52,8 @@ class LaureateListMatch
 class Prize
 {
     public ?string $category = null;
-    public ?array $laureate = null;
-    public ?string $overall_motivation = null;
+    public ?array $laureates = null;
+    public ?string $overallMotivation = null;
     public ?string $year = null;
 }
 
@@ -61,8 +61,8 @@ class Prize
 class PrizeListMatch
 {
     public ?string $category = null;
-    public ?array $laureate = null;
-    public ?string $overall_motivation = null;
+    public ?array $laureates = null;
+    public ?string $overallMotivation = null;
     public ?string $year = null;
 }
 

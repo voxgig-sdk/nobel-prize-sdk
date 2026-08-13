@@ -43,8 +43,8 @@ class NobelPrizeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('NOBELPRIZE_TEST_LIVE');
-        $override = self::getenv('NOBELPRIZE_TEST_OVERRIDE');
+        $live = self::getenv('NOBEL_PRIZE_TEST_LIVE');
+        $override = self::getenv('NOBEL_PRIZE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class NobelPrizeTestRunner
             }
         }
 
-        $explain = self::getenv('NOBELPRIZE_TEST_EXPLAIN');
+        $explain = self::getenv('NOBEL_PRIZE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['NOBELPRIZE_TEST_EXPLAIN'] = $explain;
+            $m['NOBEL_PRIZE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -92,17 +92,17 @@ laureate = client.Laureate()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `born` | `str` | No |  |
-| `born_city` | `str` | No |  |
-| `born_country` | `str` | No |  |
-| `born_country_code` | `str` | No |  |
+| `bornCity` | `str` | No |  |
+| `bornCountry` | `str` | No |  |
+| `bornCountryCode` | `str` | No |  |
 | `died` | `str` | No |  |
-| `died_city` | `str` | No |  |
-| `died_country` | `str` | No |  |
-| `died_country_code` | `str` | No |  |
+| `diedCity` | `str` | No |  |
+| `diedCountry` | `str` | No |  |
+| `diedCountryCode` | `str` | No |  |
 | `firstname` | `str` | No |  |
 | `gender` | `str` | No |  |
 | `id` | `str` | No |  |
-| `prize` | `list` | No |  |
+| `prizes` | `list` | No |  |
 | `surname` | `str` | No |  |
 
 ### Operations
@@ -157,8 +157,8 @@ prize = client.Prize()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `str` | No |  |
-| `laureate` | `list` | No |  |
-| `overall_motivation` | `str` | No |  |
+| `laureates` | `list` | No |  |
+| `overallMotivation` | `str` | No |  |
 | `year` | `str` | No |  |
 
 ### Operations

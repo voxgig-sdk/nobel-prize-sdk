@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local laureate, err = client:Laureate():load()
+    local laureate, err = client:Laureate():list()
     if err then error(err) end
-    -- laureate is the loaded record
+    -- laureate is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -233,17 +233,17 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `born` |  |
-| `born_city` |  |
-| `born_country` |  |
-| `born_country_code` |  |
+| `bornCity` |  |
+| `bornCountry` |  |
+| `bornCountryCode` |  |
 | `died` |  |
-| `died_city` |  |
-| `died_country` |  |
-| `died_country_code` |  |
+| `diedCity` |  |
+| `diedCountry` |  |
+| `diedCountryCode` |  |
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `prize` |  |
+| `prizes` |  |
 | `surname` |  |
 
 Operations: List.
@@ -255,8 +255,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `laureate` |  |
-| `overall_motivation` |  |
+| `laureates` |  |
+| `overallMotivation` |  |
 | `year` |  |
 
 Operations: List.
@@ -283,17 +283,17 @@ Create an instance: `local laureate = client:Laureate(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `string` |  |
-| `born_city` | `string` |  |
-| `born_country` | `string` |  |
-| `born_country_code` | `string` |  |
+| `bornCity` | `string` |  |
+| `bornCountry` | `string` |  |
+| `bornCountryCode` | `string` |  |
 | `died` | `string` |  |
-| `died_city` | `string` |  |
-| `died_country` | `string` |  |
-| `died_country_code` | `string` |  |
+| `diedCity` | `string` |  |
+| `diedCountry` | `string` |  |
+| `diedCountryCode` | `string` |  |
 | `firstname` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `string` |  |
-| `prize` | `table` |  |
+| `prizes` | `table` |  |
 | `surname` | `string` |  |
 
 #### Example: List
@@ -318,8 +318,8 @@ Create an instance: `local prize = client:Prize(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `laureate` | `table` |  |
-| `overall_motivation` | `string` |  |
+| `laureates` | `table` |  |
+| `overallMotivation` | `string` |  |
 | `year` | `string` |  |
 
 #### Example: List

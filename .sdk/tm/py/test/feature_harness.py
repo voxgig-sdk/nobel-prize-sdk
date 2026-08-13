@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import NobelPrizeControl
-from core.error import NobelPrizeError
-from core.result import NobelPrizeResult
-from core.spec import NobelPrizeSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import NobelPrizeControl
+from projectname_sdk.core.error import NobelPrizeError
+from projectname_sdk.core.result import NobelPrizeResult
+from projectname_sdk.core.spec import NobelPrizeSpec
 
 
 # True when this SDK was generated with the named feature.

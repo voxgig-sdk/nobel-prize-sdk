@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'NobelPrize',
   }
 
 
@@ -66,21 +66,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "born_city",
+          "name": "bornCity",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "born_country",
+          "name": "bornCountry",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "born_country_code",
+          "name": "bornCountryCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -94,21 +94,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "died_city",
+          "name": "diedCity",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "died_country",
+          "name": "diedCountry",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "died_country_code",
+          "name": "diedCountryCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
@@ -136,7 +136,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "prize",
+          "name": "prizes",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 11
@@ -225,6 +225,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/laureate.json",
               "parts": [
@@ -244,7 +245,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.laureates`"
               },
               "index$": 0
             }
@@ -267,14 +268,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "laureate",
+          "name": "laureates",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "overall_motivation",
+          "name": "overallMotivation",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -315,6 +316,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/prize.json",
               "parts": [
@@ -328,7 +330,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.prizes`"
               },
               "index$": 0
             }

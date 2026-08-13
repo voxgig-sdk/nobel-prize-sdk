@@ -95,17 +95,17 @@ local laureate = client:Laureate(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `born` | `string` | No |  |
-| `born_city` | `string` | No |  |
-| `born_country` | `string` | No |  |
-| `born_country_code` | `string` | No |  |
+| `bornCity` | `string` | No |  |
+| `bornCountry` | `string` | No |  |
+| `bornCountryCode` | `string` | No |  |
 | `died` | `string` | No |  |
-| `died_city` | `string` | No |  |
-| `died_country` | `string` | No |  |
-| `died_country_code` | `string` | No |  |
+| `diedCity` | `string` | No |  |
+| `diedCountry` | `string` | No |  |
+| `diedCountryCode` | `string` | No |  |
 | `firstname` | `string` | No |  |
 | `gender` | `string` | No |  |
 | `id` | `string` | No |  |
-| `prize` | `table` | No |  |
+| `prizes` | `table` | No |  |
 | `surname` | `string` | No |  |
 
 ### Operations
@@ -159,8 +159,8 @@ local prize = client:Prize(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
-| `laureate` | `table` | No |  |
-| `overall_motivation` | `string` | No |  |
+| `laureates` | `table` | No |  |
+| `overallMotivation` | `string` | No |  |
 | `year` | `string` | No |  |
 
 ### Operations

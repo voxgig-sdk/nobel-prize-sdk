@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ NobelPrizeUtility.registrar = ->(u) {
   u.prepare_params = NobelPrizeUtilities::PrepareParams
   u.prepare_path = NobelPrizeUtilities::PreparePath
   u.prepare_query = NobelPrizeUtilities::PrepareQuery
+  u.graphql_body = NobelPrizeUtilities::GraphqlBody
+  u.graphql_errors = NobelPrizeUtilities::GraphqlErrors
   u.result_basic = NobelPrizeUtilities::ResultBasic
   u.result_body = NobelPrizeUtilities::ResultBody
   u.result_headers = NobelPrizeUtilities::ResultHeaders

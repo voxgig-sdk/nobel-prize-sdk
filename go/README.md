@@ -262,17 +262,17 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"born"` |  |
-| `"born_city"` |  |
-| `"born_country"` |  |
-| `"born_country_code"` |  |
+| `"bornCity"` |  |
+| `"bornCountry"` |  |
+| `"bornCountryCode"` |  |
 | `"died"` |  |
-| `"died_city"` |  |
-| `"died_country"` |  |
-| `"died_country_code"` |  |
+| `"diedCity"` |  |
+| `"diedCountry"` |  |
+| `"diedCountryCode"` |  |
 | `"firstname"` |  |
 | `"gender"` |  |
 | `"id"` |  |
-| `"prize"` |  |
+| `"prizes"` |  |
 | `"surname"` |  |
 
 Operations: List.
@@ -284,8 +284,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `"category"` |  |
-| `"laureate"` |  |
-| `"overall_motivation"` |  |
+| `"laureates"` |  |
+| `"overallMotivation"` |  |
 | `"year"` |  |
 
 Operations: List.
@@ -312,17 +312,17 @@ Create an instance: `laureate := client.Laureate(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `string` |  |
-| `born_city` | `string` |  |
-| `born_country` | `string` |  |
-| `born_country_code` | `string` |  |
+| `bornCity` | `string` |  |
+| `bornCountry` | `string` |  |
+| `bornCountryCode` | `string` |  |
 | `died` | `string` |  |
-| `died_city` | `string` |  |
-| `died_country` | `string` |  |
-| `died_country_code` | `string` |  |
+| `diedCity` | `string` |  |
+| `diedCountry` | `string` |  |
+| `diedCountryCode` | `string` |  |
 | `firstname` | `string` |  |
 | `gender` | `string` |  |
 | `id` | `string` |  |
-| `prize` | `[]any` |  |
+| `prizes` | `[]any` |  |
 | `surname` | `string` |  |
 
 #### Example: List
@@ -351,8 +351,8 @@ Create an instance: `prize := client.Prize(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `string` |  |
-| `laureate` | `[]any` |  |
-| `overall_motivation` | `string` |  |
+| `laureates` | `[]any` |  |
+| `overallMotivation` | `string` |  |
 | `year` | `string` |  |
 
 #### Example: List

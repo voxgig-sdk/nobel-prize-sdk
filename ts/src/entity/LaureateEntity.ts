@@ -37,7 +37,7 @@ class LaureateEntity extends NobelPrizeEntityBase<Laureate> {
 
 
 
-  async list(this: any, reqmatch?: LaureateListMatch, ctrl?: Control): Promise<Laureate[]> {
+  async list(this: any, reqmatch?: LaureateListMatch, ctrl?: Control): Promise<LaureateEntity[]> {
 
     const utility = this._utility
 

@@ -97,17 +97,17 @@ $laureate = $client->Laureate();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `born` | `string` | No |  |
-| `born_city` | `string` | No |  |
-| `born_country` | `string` | No |  |
-| `born_country_code` | `string` | No |  |
+| `bornCity` | `string` | No |  |
+| `bornCountry` | `string` | No |  |
+| `bornCountryCode` | `string` | No |  |
 | `died` | `string` | No |  |
-| `died_city` | `string` | No |  |
-| `died_country` | `string` | No |  |
-| `died_country_code` | `string` | No |  |
+| `diedCity` | `string` | No |  |
+| `diedCountry` | `string` | No |  |
+| `diedCountryCode` | `string` | No |  |
 | `firstname` | `string` | No |  |
 | `gender` | `string` | No |  |
 | `id` | `string` | No |  |
-| `prize` | `array` | No |  |
+| `prizes` | `array` | No |  |
 | `surname` | `string` | No |  |
 
 ### Operations
@@ -161,8 +161,8 @@ $prize = $client->Prize();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `category` | `string` | No |  |
-| `laureate` | `array` | No |  |
-| `overall_motivation` | `string` | No |  |
+| `laureates` | `array` | No |  |
+| `overallMotivation` | `string` | No |  |
 | `year` | `string` | No |  |
 
 ### Operations

@@ -26,8 +26,8 @@ import {
 describe('PrizeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when NOBELPRIZE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('NOBELPRIZE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when NOBEL_PRIZE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('NOBEL_PRIZE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = NobelPrizeSDK.test()
@@ -63,7 +63,7 @@ describe('PrizeEntity', async () => {
     const prize_ref01_ent = client.Prize()
     const prize_ref01_match: any = {}
 
-    const prize_ref01_list = await prize_ref01_ent.list(prize_ref01_match)
+    const prize_ref01_list = (await prize_ref01_ent.list(prize_ref01_match)).map((e: any) => e.data())
 
 
   })

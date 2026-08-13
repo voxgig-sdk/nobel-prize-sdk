@@ -16,11 +16,11 @@
 import pytest
 
 from nobelprize_sdk import NobelPrizeSDK
-from core.error import NobelPrizeError
-from core.result import NobelPrizeResult
-from core.response import NobelPrizeResponse
-from core.spec import NobelPrizeSpec
-from feature.base_feature import NobelPrizeBaseFeature
+from nobelprize_sdk.core.error import NobelPrizeError
+from nobelprize_sdk.core.result import NobelPrizeResult
+from nobelprize_sdk.core.response import NobelPrizeResponse
+from nobelprize_sdk.core.spec import NobelPrizeSpec
+from nobelprize_sdk.feature.base_feature import NobelPrizeBaseFeature
 
 
 def _client():

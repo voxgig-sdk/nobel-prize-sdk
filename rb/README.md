@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = NobelPrizeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 laureate = client.Laureate.list()
 puts laureate
 ```
@@ -238,17 +239,17 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `born` |  |
-| `born_city` |  |
-| `born_country` |  |
-| `born_country_code` |  |
+| `bornCity` |  |
+| `bornCountry` |  |
+| `bornCountryCode` |  |
 | `died` |  |
-| `died_city` |  |
-| `died_country` |  |
-| `died_country_code` |  |
+| `diedCity` |  |
+| `diedCountry` |  |
+| `diedCountryCode` |  |
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `prize` |  |
+| `prizes` |  |
 | `surname` |  |
 
 Operations: List.
@@ -260,8 +261,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `laureate` |  |
-| `overall_motivation` |  |
+| `laureates` |  |
+| `overallMotivation` |  |
 | `year` |  |
 
 Operations: List.
@@ -288,17 +289,17 @@ Create an instance: `laureate = client.Laureate`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `String` |  |
-| `born_city` | `String` |  |
-| `born_country` | `String` |  |
-| `born_country_code` | `String` |  |
+| `bornCity` | `String` |  |
+| `bornCountry` | `String` |  |
+| `bornCountryCode` | `String` |  |
 | `died` | `String` |  |
-| `died_city` | `String` |  |
-| `died_country` | `String` |  |
-| `died_country_code` | `String` |  |
+| `diedCity` | `String` |  |
+| `diedCountry` | `String` |  |
+| `diedCountryCode` | `String` |  |
 | `firstname` | `String` |  |
 | `gender` | `String` |  |
 | `id` | `String` |  |
-| `prize` | `Array` |  |
+| `prizes` | `Array` |  |
 | `surname` | `String` |  |
 
 #### Example: List
@@ -324,8 +325,8 @@ Create an instance: `prize = client.Prize`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `String` |  |
-| `laureate` | `Array` |  |
-| `overall_motivation` | `String` |  |
+| `laureates` | `Array` |  |
+| `overallMotivation` | `String` |  |
 | `year` | `String` |  |
 
 #### Example: List

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from nobelprize_sdk.utility.voxgig_struct import voxgig_struct as vs
 from nobelprize_sdk import NobelPrizeSDK
-from core import helpers
+from nobelprize_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _laureate_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "NOBELPRIZE_TEST_LAUREATE_ENTID": {},
-        "NOBELPRIZE_TEST_LIVE": "FALSE",
+        "NOBEL_PRIZE_TEST_LAUREATE_ENTID": {},
+        "NOBEL_PRIZE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("NOBELPRIZE_TEST_LIVE") == "TRUE"
+    live = env.get("NOBEL_PRIZE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

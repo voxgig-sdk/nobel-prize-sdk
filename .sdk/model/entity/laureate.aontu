@@ -11,17 +11,17 @@ main: kit: entity: laureate: {
       type: "`$STRING`"
     }
     {
-      name: "born_city"
+      name: "bornCity"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "born_country"
+      name: "bornCountry"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "born_country_code"
+      name: "bornCountryCode"
       req: false
       type: "`$STRING`"
     }
@@ -31,17 +31,17 @@ main: kit: entity: laureate: {
       type: "`$STRING`"
     }
     {
-      name: "died_city"
+      name: "diedCity"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "died_country"
+      name: "diedCountry"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "died_country_code"
+      name: "diedCountryCode"
       req: false
       type: "`$STRING`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: laureate: {
       type: "`$STRING`"
     }
     {
-      name: "prize"
+      name: "prizes"
       req: false
       type: "`$ARRAY`"
     }
@@ -162,7 +162,7 @@ main: kit: entity: laureate: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.laureates`"
           }
         }
       ]

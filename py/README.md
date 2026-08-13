@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NobelPrizeSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 laureate = client.Laureate().list()
 # laureate contains the mock response record
 ```
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -244,17 +245,17 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `born` |  |
-| `born_city` |  |
-| `born_country` |  |
-| `born_country_code` |  |
+| `bornCity` |  |
+| `bornCountry` |  |
+| `bornCountryCode` |  |
 | `died` |  |
-| `died_city` |  |
-| `died_country` |  |
-| `died_country_code` |  |
+| `diedCity` |  |
+| `diedCountry` |  |
+| `diedCountryCode` |  |
 | `firstname` |  |
 | `gender` |  |
 | `id` |  |
-| `prize` |  |
+| `prizes` |  |
 | `surname` |  |
 
 Operations: List.
@@ -266,8 +267,8 @@ API path: `/laureate.json`
 | Field | Description |
 | --- | --- |
 | `category` |  |
-| `laureate` |  |
-| `overall_motivation` |  |
+| `laureates` |  |
+| `overallMotivation` |  |
 | `year` |  |
 
 Operations: List.
@@ -294,17 +295,17 @@ Create an instance: `laureate = client.Laureate()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `born` | `str` |  |
-| `born_city` | `str` |  |
-| `born_country` | `str` |  |
-| `born_country_code` | `str` |  |
+| `bornCity` | `str` |  |
+| `bornCountry` | `str` |  |
+| `bornCountryCode` | `str` |  |
 | `died` | `str` |  |
-| `died_city` | `str` |  |
-| `died_country` | `str` |  |
-| `died_country_code` | `str` |  |
+| `diedCity` | `str` |  |
+| `diedCountry` | `str` |  |
+| `diedCountryCode` | `str` |  |
 | `firstname` | `str` |  |
 | `gender` | `str` |  |
 | `id` | `str` |  |
-| `prize` | `list` |  |
+| `prizes` | `list` |  |
 | `surname` | `str` |  |
 
 #### Example: List
@@ -329,8 +330,8 @@ Create an instance: `prize = client.Prize()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `category` | `str` |  |
-| `laureate` | `list` |  |
-| `overall_motivation` | `str` |  |
+| `laureates` | `list` |  |
+| `overallMotivation` | `str` |  |
 | `year` | `str` |  |
 
 #### Example: List
