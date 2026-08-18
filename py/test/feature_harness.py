@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from nobelprize_sdk.config import make_config
+from nobelprize_sdk.config import shared_config
 from nobelprize_sdk.features import _make_feature
 from nobelprize_sdk.core.control import NobelPrizeControl
 from nobelprize_sdk.core.error import NobelPrizeError
@@ -24,7 +24,7 @@ from nobelprize_sdk.core.spec import NobelPrizeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

@@ -15,7 +15,7 @@ require_relative "../NobelPrize_sdk"
 module NobelPrizeFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = NobelPrizeConfig.make_config["feature"]
+    f = NobelPrizeConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -28,7 +28,7 @@ class NobelPrizeSDK
     utility = NobelPrizeUtility.new
     @_utility = utility
 
-    config = NobelPrizeConfig.make_config
+    config = NobelPrizeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

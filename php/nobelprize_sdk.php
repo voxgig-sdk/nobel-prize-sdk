@@ -40,7 +40,7 @@ class NobelPrizeSDK
         $utility = new NobelPrizeUtility();
         $this->_utility = $utility;
 
-        $config = NobelPrizeConfig::make_config();
+        $config = NobelPrizeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
