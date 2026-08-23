@@ -36,66 +36,77 @@
               "active": true,
               "name": "born",
               "req": false,
+              "short": "Birth date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "bornCity",
               "req": false,
+              "short": "City of birth",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "bornCountry",
               "req": false,
+              "short": "Country of birth",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "bornCountryCode",
               "req": false,
+              "short": "Country code of birth country",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "died",
               "req": false,
+              "short": "Death date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "diedCity",
               "req": false,
+              "short": "City of death",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "diedCountry",
               "req": false,
+              "short": "Country of death",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "diedCountryCode",
               "req": false,
+              "short": "Country code of death country",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "firstname",
               "req": false,
+              "short": "First name of the laureate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gender",
               "req": false,
+              "short": "Gender of the laureate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Laureate ID",
               "type": "`$STRING`"
             },
             {
@@ -108,6 +119,7 @@
               "active": true,
               "name": "surname",
               "req": false,
+              "short": "Surname of the laureate",
               "type": "`$STRING`"
             }
           ],
@@ -231,6 +243,7 @@
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Category of the Nobel Prize",
               "type": "`$STRING`"
             },
             {
@@ -243,12 +256,14 @@
               "active": true,
               "name": "overallMotivation",
               "req": false,
+              "short": "Overall motivation for the prize",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "Year the prize was awarded",
               "type": "`$STRING`"
             }
           ],

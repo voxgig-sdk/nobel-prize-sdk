@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "NobelPrize",
+			"slug": "nobel-prize",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,46 +37,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "born",
+						"short": "Birth date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bornCity",
+						"short": "City of birth",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bornCountry",
+						"short": "Country of birth",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "bornCountryCode",
+						"short": "Country code of birth country",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "died",
+						"short": "Death date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "diedCity",
+						"short": "City of death",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "diedCountry",
+						"short": "Country of death",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "diedCountryCode",
+						"short": "Country code of death country",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "firstname",
+						"short": "First name of the laureate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gender",
+						"short": "Gender of the laureate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Laureate ID",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -82,6 +96,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "surname",
+						"short": "Surname of the laureate",
 						"type": "`$STRING`",
 					},
 				},
@@ -178,6 +193,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "category",
+						"short": "Category of the Nobel Prize",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -186,10 +202,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "overallMotivation",
+						"short": "Overall motivation for the prize",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "Year the prize was awarded",
 						"type": "`$STRING`",
 					},
 				},

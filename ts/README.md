@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,19 +288,19 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `born` |  |
-| `bornCity` |  |
-| `bornCountry` |  |
-| `bornCountryCode` |  |
-| `died` |  |
-| `diedCity` |  |
-| `diedCountry` |  |
-| `diedCountryCode` |  |
-| `firstname` |  |
-| `gender` |  |
-| `id` |  |
+| `born` | Birth date |
+| `bornCity` | City of birth |
+| `bornCountry` | Country of birth |
+| `bornCountryCode` | Country code of birth country |
+| `died` | Death date |
+| `diedCity` | City of death |
+| `diedCountry` | Country of death |
+| `diedCountryCode` | Country code of death country |
+| `firstname` | First name of the laureate |
+| `gender` | Gender of the laureate |
+| `id` | Laureate ID |
 | `prizes` |  |
-| `surname` |  |
+| `surname` | Surname of the laureate |
 
 Operations: list.
 
@@ -310,10 +310,10 @@ API path: `/laureate.json`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `category` | Category of the Nobel Prize |
 | `laureates` |  |
-| `overallMotivation` |  |
-| `year` |  |
+| `overallMotivation` | Overall motivation for the prize |
+| `year` | Year the prize was awarded |
 
 Operations: list.
 
@@ -338,19 +338,19 @@ Create an instance: `const laureate = client.Laureate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `born` | `string` |  |
-| `bornCity` | `string` |  |
-| `bornCountry` | `string` |  |
-| `bornCountryCode` | `string` |  |
-| `died` | `string` |  |
-| `diedCity` | `string` |  |
-| `diedCountry` | `string` |  |
-| `diedCountryCode` | `string` |  |
-| `firstname` | `string` |  |
-| `gender` | `string` |  |
-| `id` | `string` |  |
+| `born` | `string` | Birth date |
+| `bornCity` | `string` | City of birth |
+| `bornCountry` | `string` | Country of birth |
+| `bornCountryCode` | `string` | Country code of birth country |
+| `died` | `string` | Death date |
+| `diedCity` | `string` | City of death |
+| `diedCountry` | `string` | Country of death |
+| `diedCountryCode` | `string` | Country code of death country |
+| `firstname` | `string` | First name of the laureate |
+| `gender` | `string` | Gender of the laureate |
+| `id` | `string` | Laureate ID |
 | `prizes` | `any[]` |  |
-| `surname` | `string` |  |
+| `surname` | `string` | Surname of the laureate |
 
 #### Example: List
 
@@ -373,10 +373,10 @@ Create an instance: `const prize = client.Prize()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
+| `category` | `string` | Category of the Nobel Prize |
 | `laureates` | `any[]` |  |
-| `overallMotivation` | `string` |  |
-| `year` | `string` |  |
+| `overallMotivation` | `string` | Overall motivation for the prize |
+| `year` | `string` | Year the prize was awarded |
 
 #### Example: List
 

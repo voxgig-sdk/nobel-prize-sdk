@@ -8,6 +8,7 @@ main: kit: entity: prize: {
     {
       name: "category"
       req: false
+      short: "Category of the Nobel Prize"
       type: "`$STRING`"
     }
     {
@@ -18,11 +19,13 @@ main: kit: entity: prize: {
     {
       name: "overallMotivation"
       req: false
+      short: "Overall motivation for the prize"
       type: "`$STRING`"
     }
     {
       name: "year"
       req: false
+      short: "Year the prize was awarded"
       type: "`$STRING`"
     }
   ]

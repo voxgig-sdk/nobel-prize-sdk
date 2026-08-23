@@ -97,19 +97,19 @@ laureate = client.Laureate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | `String` | No |  |
-| `bornCity` | `String` | No |  |
-| `bornCountry` | `String` | No |  |
-| `bornCountryCode` | `String` | No |  |
-| `died` | `String` | No |  |
-| `diedCity` | `String` | No |  |
-| `diedCountry` | `String` | No |  |
-| `diedCountryCode` | `String` | No |  |
-| `firstname` | `String` | No |  |
-| `gender` | `String` | No |  |
-| `id` | `String` | No |  |
+| `born` | `String` | No | Birth date |
+| `bornCity` | `String` | No | City of birth |
+| `bornCountry` | `String` | No | Country of birth |
+| `bornCountryCode` | `String` | No | Country code of birth country |
+| `died` | `String` | No | Death date |
+| `diedCity` | `String` | No | City of death |
+| `diedCountry` | `String` | No | Country of death |
+| `diedCountryCode` | `String` | No | Country code of death country |
+| `firstname` | `String` | No | First name of the laureate |
+| `gender` | `String` | No | Gender of the laureate |
+| `id` | `String` | No | Laureate ID |
 | `prizes` | `Array` | No |  |
-| `surname` | `String` | No |  |
+| `surname` | `String` | No | Surname of the laureate |
 
 ### Operations
 
@@ -161,10 +161,10 @@ prize = client.Prize
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | No |  |
+| `category` | `String` | No | Category of the Nobel Prize |
 | `laureates` | `Array` | No |  |
-| `overallMotivation` | `String` | No |  |
-| `year` | `String` | No |  |
+| `overallMotivation` | `String` | No | Overall motivation for the prize |
+| `year` | `String` | No | Year the prize was awarded |
 
 ### Operations
 

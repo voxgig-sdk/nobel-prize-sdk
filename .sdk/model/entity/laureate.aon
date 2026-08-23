@@ -8,56 +8,67 @@ main: kit: entity: laureate: {
     {
       name: "born"
       req: false
+      short: "Birth date"
       type: "`$STRING`"
     }
     {
       name: "bornCity"
       req: false
+      short: "City of birth"
       type: "`$STRING`"
     }
     {
       name: "bornCountry"
       req: false
+      short: "Country of birth"
       type: "`$STRING`"
     }
     {
       name: "bornCountryCode"
       req: false
+      short: "Country code of birth country"
       type: "`$STRING`"
     }
     {
       name: "died"
       req: false
+      short: "Death date"
       type: "`$STRING`"
     }
     {
       name: "diedCity"
       req: false
+      short: "City of death"
       type: "`$STRING`"
     }
     {
       name: "diedCountry"
       req: false
+      short: "Country of death"
       type: "`$STRING`"
     }
     {
       name: "diedCountryCode"
       req: false
+      short: "Country code of death country"
       type: "`$STRING`"
     }
     {
       name: "firstname"
       req: false
+      short: "First name of the laureate"
       type: "`$STRING`"
     }
     {
       name: "gender"
       req: false
+      short: "Gender of the laureate"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Laureate ID"
       type: "`$STRING`"
     }
     {
@@ -68,6 +79,7 @@ main: kit: entity: laureate: {
     {
       name: "surname"
       req: false
+      short: "Surname of the laureate"
       type: "`$STRING`"
     }
   ]

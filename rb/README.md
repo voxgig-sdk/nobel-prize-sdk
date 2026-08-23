@@ -238,19 +238,19 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `born` |  |
-| `bornCity` |  |
-| `bornCountry` |  |
-| `bornCountryCode` |  |
-| `died` |  |
-| `diedCity` |  |
-| `diedCountry` |  |
-| `diedCountryCode` |  |
-| `firstname` |  |
-| `gender` |  |
-| `id` |  |
+| `born` | Birth date |
+| `bornCity` | City of birth |
+| `bornCountry` | Country of birth |
+| `bornCountryCode` | Country code of birth country |
+| `died` | Death date |
+| `diedCity` | City of death |
+| `diedCountry` | Country of death |
+| `diedCountryCode` | Country code of death country |
+| `firstname` | First name of the laureate |
+| `gender` | Gender of the laureate |
+| `id` | Laureate ID |
 | `prizes` |  |
-| `surname` |  |
+| `surname` | Surname of the laureate |
 
 Operations: List.
 
@@ -260,10 +260,10 @@ API path: `/laureate.json`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
+| `category` | Category of the Nobel Prize |
 | `laureates` |  |
-| `overallMotivation` |  |
-| `year` |  |
+| `overallMotivation` | Overall motivation for the prize |
+| `year` | Year the prize was awarded |
 
 Operations: List.
 
@@ -288,19 +288,19 @@ Create an instance: `laureate = client.Laureate`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `born` | `String` |  |
-| `bornCity` | `String` |  |
-| `bornCountry` | `String` |  |
-| `bornCountryCode` | `String` |  |
-| `died` | `String` |  |
-| `diedCity` | `String` |  |
-| `diedCountry` | `String` |  |
-| `diedCountryCode` | `String` |  |
-| `firstname` | `String` |  |
-| `gender` | `String` |  |
-| `id` | `String` |  |
+| `born` | `String` | Birth date |
+| `bornCity` | `String` | City of birth |
+| `bornCountry` | `String` | Country of birth |
+| `bornCountryCode` | `String` | Country code of birth country |
+| `died` | `String` | Death date |
+| `diedCity` | `String` | City of death |
+| `diedCountry` | `String` | Country of death |
+| `diedCountryCode` | `String` | Country code of death country |
+| `firstname` | `String` | First name of the laureate |
+| `gender` | `String` | Gender of the laureate |
+| `id` | `String` | Laureate ID |
 | `prizes` | `Array` |  |
-| `surname` | `String` |  |
+| `surname` | `String` | Surname of the laureate |
 
 #### Example: List
 
@@ -324,10 +324,10 @@ Create an instance: `prize = client.Prize`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `String` |  |
+| `category` | `String` | Category of the Nobel Prize |
 | `laureates` | `Array` |  |
-| `overallMotivation` | `String` |  |
-| `year` | `String` |  |
+| `overallMotivation` | `String` | Overall motivation for the prize |
+| `year` | `String` | Year the prize was awarded |
 
 #### Example: List
 

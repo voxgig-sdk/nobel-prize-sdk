@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'NobelPrize',
+        slug: "nobel-prize",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,46 +70,57 @@ class Config {
       "fields": [
         {
           "name": "born",
+          "short": "Birth date",
           "type": "`$STRING`"
         },
         {
           "name": "bornCity",
+          "short": "City of birth",
           "type": "`$STRING`"
         },
         {
           "name": "bornCountry",
+          "short": "Country of birth",
           "type": "`$STRING`"
         },
         {
           "name": "bornCountryCode",
+          "short": "Country code of birth country",
           "type": "`$STRING`"
         },
         {
           "name": "died",
+          "short": "Death date",
           "type": "`$STRING`"
         },
         {
           "name": "diedCity",
+          "short": "City of death",
           "type": "`$STRING`"
         },
         {
           "name": "diedCountry",
+          "short": "Country of death",
           "type": "`$STRING`"
         },
         {
           "name": "diedCountryCode",
+          "short": "Country code of death country",
           "type": "`$STRING`"
         },
         {
           "name": "firstname",
+          "short": "First name of the laureate",
           "type": "`$STRING`"
         },
         {
           "name": "gender",
+          "short": "Gender of the laureate",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Laureate ID",
           "type": "`$STRING`"
         },
         {
@@ -107,6 +129,7 @@ class Config {
         },
         {
           "name": "surname",
+          "short": "Surname of the laureate",
           "type": "`$STRING`"
         }
       ],
@@ -203,6 +226,7 @@ class Config {
       "fields": [
         {
           "name": "category",
+          "short": "Category of the Nobel Prize",
           "type": "`$STRING`"
         },
         {
@@ -211,10 +235,12 @@ class Config {
         },
         {
           "name": "overallMotivation",
+          "short": "Overall motivation for the prize",
           "type": "`$STRING`"
         },
         {
           "name": "year",
+          "short": "Year the prize was awarded",
           "type": "`$STRING`"
         }
       ],

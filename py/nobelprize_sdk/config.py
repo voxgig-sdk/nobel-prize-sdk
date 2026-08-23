@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "NobelPrize",
+            "slug": "nobel-prize",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,46 +54,57 @@ def make_config():
         "fields": [
           {
             "name": "born",
+            "short": "Birth date",
             "type": "`$STRING`",
           },
           {
             "name": "bornCity",
+            "short": "City of birth",
             "type": "`$STRING`",
           },
           {
             "name": "bornCountry",
+            "short": "Country of birth",
             "type": "`$STRING`",
           },
           {
             "name": "bornCountryCode",
+            "short": "Country code of birth country",
             "type": "`$STRING`",
           },
           {
             "name": "died",
+            "short": "Death date",
             "type": "`$STRING`",
           },
           {
             "name": "diedCity",
+            "short": "City of death",
             "type": "`$STRING`",
           },
           {
             "name": "diedCountry",
+            "short": "Country of death",
             "type": "`$STRING`",
           },
           {
             "name": "diedCountryCode",
+            "short": "Country code of death country",
             "type": "`$STRING`",
           },
           {
             "name": "firstname",
+            "short": "First name of the laureate",
             "type": "`$STRING`",
           },
           {
             "name": "gender",
+            "short": "Gender of the laureate",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "Laureate ID",
             "type": "`$STRING`",
           },
           {
@@ -99,6 +113,7 @@ def make_config():
           },
           {
             "name": "surname",
+            "short": "Surname of the laureate",
             "type": "`$STRING`",
           },
         ],
@@ -195,6 +210,7 @@ def make_config():
         "fields": [
           {
             "name": "category",
+            "short": "Category of the Nobel Prize",
             "type": "`$STRING`",
           },
           {
@@ -203,10 +219,12 @@ def make_config():
           },
           {
             "name": "overallMotivation",
+            "short": "Overall motivation for the prize",
             "type": "`$STRING`",
           },
           {
             "name": "year",
+            "short": "Year the prize was awarded",
             "type": "`$STRING`",
           },
         ],

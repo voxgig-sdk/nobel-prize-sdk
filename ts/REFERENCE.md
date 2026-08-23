@@ -128,19 +128,19 @@ const laureate = client.Laureate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `born` | `string` | No |  |
-| `bornCity` | `string` | No |  |
-| `bornCountry` | `string` | No |  |
-| `bornCountryCode` | `string` | No |  |
-| `died` | `string` | No |  |
-| `diedCity` | `string` | No |  |
-| `diedCountry` | `string` | No |  |
-| `diedCountryCode` | `string` | No |  |
-| `firstname` | `string` | No |  |
-| `gender` | `string` | No |  |
-| `id` | `string` | No |  |
+| `born` | `string` | No | Birth date |
+| `bornCity` | `string` | No | City of birth |
+| `bornCountry` | `string` | No | Country of birth |
+| `bornCountryCode` | `string` | No | Country code of birth country |
+| `died` | `string` | No | Death date |
+| `diedCity` | `string` | No | City of death |
+| `diedCountry` | `string` | No | Country of death |
+| `diedCountryCode` | `string` | No | Country code of death country |
+| `firstname` | `string` | No | First name of the laureate |
+| `gender` | `string` | No | Gender of the laureate |
+| `id` | `string` | No | Laureate ID |
 | `prizes` | `any[]` | No |  |
-| `surname` | `string` | No |  |
+| `surname` | `string` | No | Surname of the laureate |
 
 ### Operations
 
@@ -190,10 +190,10 @@ const prize = client.Prize()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
+| `category` | `string` | No | Category of the Nobel Prize |
 | `laureates` | `any[]` | No |  |
-| `overallMotivation` | `string` | No |  |
-| `year` | `string` | No |  |
+| `overallMotivation` | `string` | No | Overall motivation for the prize |
+| `year` | `string` | No | Year the prize was awarded |
 
 ### Operations
 
