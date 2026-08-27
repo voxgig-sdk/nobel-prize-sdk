@@ -28,6 +28,7 @@ module NobelPrizeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
