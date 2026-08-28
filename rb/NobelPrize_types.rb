@@ -67,28 +67,16 @@ Laureate = Struct.new(
 
 # Request payload for Laureate#list.
 #
-# @!attribute [rw] born
+# @!attribute [rw] born_city
 #   @return [String, nil]
 #
-# @!attribute [rw] bornCity
+# @!attribute [rw] born_country
 #   @return [String, nil]
 #
-# @!attribute [rw] bornCountry
+# @!attribute [rw] died_city
 #   @return [String, nil]
 #
-# @!attribute [rw] bornCountryCode
-#   @return [String, nil]
-#
-# @!attribute [rw] died
-#   @return [String, nil]
-#
-# @!attribute [rw] diedCity
-#   @return [String, nil]
-#
-# @!attribute [rw] diedCountry
-#   @return [String, nil]
-#
-# @!attribute [rw] diedCountryCode
+# @!attribute [rw] died_country
 #   @return [String, nil]
 #
 # @!attribute [rw] firstname
@@ -98,26 +86,18 @@ Laureate = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] prizes
-#   @return [Array, nil]
+#   @return [Integer, nil]
 #
 # @!attribute [rw] surname
 #   @return [String, nil]
 LaureateListMatch = Struct.new(
-  :born,
-  :bornCity,
-  :bornCountry,
-  :bornCountryCode,
-  :died,
-  :diedCity,
-  :diedCountry,
-  :diedCountryCode,
+  :born_city,
+  :born_country,
+  :died_city,
+  :died_country,
   :firstname,
   :gender,
   :id,
-  :prizes,
   :surname,
   keyword_init: true
 )
@@ -148,18 +128,10 @@ Prize = Struct.new(
 # @!attribute [rw] category
 #   @return [String, nil]
 #
-# @!attribute [rw] laureates
-#   @return [Array, nil]
-#
-# @!attribute [rw] overallMotivation
-#   @return [String, nil]
-#
 # @!attribute [rw] year
-#   @return [String, nil]
+#   @return [Integer, nil]
 PrizeListMatch = Struct.new(
   :category,
-  :laureates,
-  :overallMotivation,
   :year,
   keyword_init: true
 )

@@ -33,18 +33,13 @@ class Laureate
 /** Request payload for Laureate#list. */
 class LaureateListMatch
 {
-    public ?string $born = null;
-    public ?string $bornCity = null;
-    public ?string $bornCountry = null;
-    public ?string $bornCountryCode = null;
-    public ?string $died = null;
-    public ?string $diedCity = null;
-    public ?string $diedCountry = null;
-    public ?string $diedCountryCode = null;
+    public ?string $born_city = null;
+    public ?string $born_country = null;
+    public ?string $died_city = null;
+    public ?string $died_country = null;
     public ?string $firstname = null;
     public ?string $gender = null;
-    public ?string $id = null;
-    public ?array $prizes = null;
+    public ?int $id = null;
     public ?string $surname = null;
 }
 
@@ -61,8 +56,6 @@ class Prize
 class PrizeListMatch
 {
     public ?string $category = null;
-    public ?array $laureates = null;
-    public ?string $overallMotivation = null;
-    public ?string $year = null;
+    public ?int $year = null;
 }
 

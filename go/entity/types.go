@@ -31,18 +31,13 @@ type Laureate struct {
 
 // LaureateListMatch is the typed request payload for Laureate.ListTyped.
 type LaureateListMatch struct {
-	Born *string `json:"born,omitempty"`
-	BornCity *string `json:"bornCity,omitempty"`
-	BornCountry *string `json:"bornCountry,omitempty"`
-	BornCountryCode *string `json:"bornCountryCode,omitempty"`
-	Died *string `json:"died,omitempty"`
-	DiedCity *string `json:"diedCity,omitempty"`
-	DiedCountry *string `json:"diedCountry,omitempty"`
-	DiedCountryCode *string `json:"diedCountryCode,omitempty"`
+	BornCity *string `json:"born_city,omitempty"`
+	BornCountry *string `json:"born_country,omitempty"`
+	DiedCity *string `json:"died_city,omitempty"`
+	DiedCountry *string `json:"died_country,omitempty"`
 	Firstname *string `json:"firstname,omitempty"`
 	Gender *string `json:"gender,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Prizes *[]any `json:"prizes,omitempty"`
+	Id *int `json:"id,omitempty"`
 	Surname *string `json:"surname,omitempty"`
 }
 
@@ -57,9 +52,7 @@ type Prize struct {
 // PrizeListMatch is the typed request payload for Prize.ListTyped.
 type PrizeListMatch struct {
 	Category *string `json:"category,omitempty"`
-	Laureates *[]any `json:"laureates,omitempty"`
-	OverallMotivation *string `json:"overallMotivation,omitempty"`
-	Year *string `json:"year,omitempty"`
+	Year *int `json:"year,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

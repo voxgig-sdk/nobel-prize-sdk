@@ -33,18 +33,13 @@ class Laureate(TypedDict, total=False):
 
 
 class LaureateListMatch(TypedDict, total=False):
-    born: str
-    bornCity: str
-    bornCountry: str
-    bornCountryCode: str
-    died: str
-    diedCity: str
-    diedCountry: str
-    diedCountryCode: str
+    born_city: str
+    born_country: str
+    died_city: str
+    died_country: str
     firstname: str
     gender: str
-    id: str
-    prizes: list
+    id: int
     surname: str
 
 
@@ -57,6 +52,4 @@ class Prize(TypedDict, total=False):
 
 class PrizeListMatch(TypedDict, total=False):
     category: str
-    laureates: list
-    overallMotivation: str
-    year: str
+    year: int

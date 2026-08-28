@@ -22,18 +22,13 @@ export interface Laureate {
 }
 
 export interface LaureateListMatch {
-  born?: string
-  bornCity?: string
-  bornCountry?: string
-  bornCountryCode?: string
-  died?: string
-  diedCity?: string
-  diedCountry?: string
-  diedCountryCode?: string
+  born_city?: string
+  born_country?: string
+  died_city?: string
+  died_country?: string
   firstname?: string
   gender?: string
-  id?: string
-  prizes?: any[]
+  id?: number
   surname?: string
 }
 
@@ -46,8 +41,6 @@ export interface Prize {
 
 export interface PrizeListMatch {
   category?: string
-  laureates?: any[]
-  overallMotivation?: string
-  year?: string
+  year?: number
 }
 
