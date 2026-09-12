@@ -123,6 +123,10 @@ class NobelPrizeConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'laureate',
           'op' => [
             'list' => [
@@ -185,8 +189,10 @@ class NobelPrizeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/laureate.json',
-                  'parts' => [
-                    'laureate.json',
+                  'segments' => [
+                    [
+                      'lit' => 'laureate.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -203,6 +209,9 @@ class NobelPrizeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.laureates`',
+                  ],
+                  'parts' => [
+                    'laureate.json',
                   ],
                 ],
               ],
@@ -260,8 +269,10 @@ class NobelPrizeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/prize.json',
-                  'parts' => [
-                    'prize.json',
+                  'segments' => [
+                    [
+                      'lit' => 'prize.json',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -272,6 +283,9 @@ class NobelPrizeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.prizes`',
+                  ],
+                  'parts' => [
+                    'prize.json',
                   ],
                 ],
               ],

@@ -157,8 +157,10 @@ main: kit: entity: laureate: {
           }
           method: "GET"
           orig: "/laureate.json"
-          parts: [
-            "laureate.json"
+          segments: [
+            {
+              lit: "laureate.json"
+            }
           ]
           select: {
             exist: [

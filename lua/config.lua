@@ -97,6 +97,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "laureate",
         ["op"] = {
           ["list"] = {
@@ -159,8 +163,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/laureate.json",
-                ["parts"] = {
-                  "laureate.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "laureate.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -177,6 +183,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.laureates`",
+                },
+                ["parts"] = {
+                  "laureate.json",
                 },
               },
             },
@@ -234,8 +243,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/prize.json",
-                ["parts"] = {
-                  "prize.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "prize.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -246,6 +257,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.prizes`",
+                },
+                ["parts"] = {
+                  "prize.json",
                 },
               },
             },

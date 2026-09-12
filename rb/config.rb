@@ -109,6 +109,10 @@ module NobelPrizeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "laureate",
           "op" => {
             "list" => {
@@ -171,8 +175,10 @@ module NobelPrizeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/laureate.json",
-                  "parts" => [
-                    "laureate.json",
+                  "segments" => [
+                    {
+                      "lit" => "laureate.json",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -190,6 +196,9 @@ module NobelPrizeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.laureates`",
                   },
+                  "parts" => [
+                    "laureate.json",
+                  ],
                 },
               ],
             },
@@ -246,8 +255,10 @@ module NobelPrizeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/prize.json",
-                  "parts" => [
-                    "prize.json",
+                  "segments" => [
+                    {
+                      "lit" => "prize.json",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -259,6 +270,9 @@ module NobelPrizeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.prizes`",
                   },
+                  "parts" => [
+                    "prize.json",
+                  ],
                 },
               ],
             },

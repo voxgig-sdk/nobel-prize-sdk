@@ -56,8 +56,10 @@ main: kit: entity: prize: {
           }
           method: "GET"
           orig: "/prize.json"
-          parts: [
-            "prize.json"
+          segments: [
+            {
+              lit: "prize.json"
+            }
           ]
           select: {
             exist: [
