@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize'
+import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize-sdk'
 
 const client = new NobelPrizeSDK()
 ```
@@ -467,7 +467,7 @@ nobel-prize/
 Import the SDK from the package root:
 
 ```ts
-import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize'
+import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize-sdk'
 ```
 
 ### Entity state

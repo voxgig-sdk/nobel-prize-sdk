@@ -1067,7 +1067,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/nobel-prize-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

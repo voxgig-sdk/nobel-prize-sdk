@@ -105,7 +105,7 @@ local results, err = client:Laureate():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
+| TypeScript | `@voxgig-sdk/nobel-prize-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
 | Python | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
 | PHP | `voxgig-sdk/nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/nobel-prize-sdk/go` | `go get github.com/voxgig-sdk/nobel-prize-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Laureate():list()
 ### TypeScript
 
 ```ts
-import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize'
+import { NobelPrizeSDK } from '@voxgig-sdk/nobel-prize-sdk'
 
 const client = new NobelPrizeSDK()
 
