@@ -1,12 +1,18 @@
 # NobelPrize SDK feature factory
 
 from nobelprize_sdk.feature.base_feature import NobelPrizeBaseFeature
+from nobelprize_sdk.feature.ratelimit_feature import NobelPrizeRatelimitFeature
+from nobelprize_sdk.feature.retry_feature import NobelPrizeRetryFeature
 from nobelprize_sdk.feature.test_feature import NobelPrizeTestFeature
+from nobelprize_sdk.feature.timeout_feature import NobelPrizeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: NobelPrizeBaseFeature(),
+    "ratelimit": lambda: NobelPrizeRatelimitFeature(),
+    "retry": lambda: NobelPrizeRetryFeature(),
     "test": lambda: NobelPrizeTestFeature(),
+    "timeout": lambda: NobelPrizeTimeoutFeature(),
 }
 
 

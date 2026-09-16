@@ -4,7 +4,10 @@ declare(strict_types=1);
 // NobelPrize SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class NobelPrizeFeatures
@@ -14,8 +17,14 @@ class NobelPrizeFeatures
         switch ($name) {
             case "base":
                 return new NobelPrizeBaseFeature();
+            case "ratelimit":
+                return new NobelPrizeRatelimitFeature();
+            case "retry":
+                return new NobelPrizeRetryFeature();
             case "test":
                 return new NobelPrizeTestFeature();
+            case "timeout":
+                return new NobelPrizeTimeoutFeature();
             default:
                 return new NobelPrizeBaseFeature();
         }
@@ -31,7 +40,10 @@ class NobelPrizeFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

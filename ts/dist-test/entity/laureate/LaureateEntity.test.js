@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.NOBEL_PRIZE_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'laureate.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'laureate.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set NOBEL_PRIZE_TEST_LAUREATE_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "born", "req": false, "short": "Birth date", "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "bornCity", "req": false, "short": "City of birth", "type": "`$STRING`", "index$": 1 }, { "active": true, "name": "bornCountry", "req": false, "short": "Country of birth", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "bornCountryCode", "req": false, "short": "Country code of birth country", "type": "`$STRING`", "index$": 3 }, { "active": true, "name": "died", "req": false, "short": "Death date", "type": "`$STRING`", "index$": 4 }, { "active": true, "name": "diedCity", "req": false, "short": "City of death", "type": "`$STRING`", "index$": 5 }, { "active": true, "name": "diedCountry", "req": false, "short": "Country of death", "type": "`$STRING`", "index$": 6 }, { "active": true, "name": "diedCountryCode", "req": false, "short": "Country code of death country", "type": "`$STRING`", "index$": 7 }, { "active": true, "name": "firstname", "req": false, "short": "First name of the laureate", "type": "`$STRING`", "index$": 8 }, { "active": true, "name": "gender", "req": false, "short": "Gender of the laureate", "type": "`$STRING`", "index$": 9 }, { "active": true, "name": "id", "req": false, "short": "Laureate ID", "type": "`$STRING`", "index$": 10 }, { "active": true, "name": "prizes", "req": false, "type": "`$ARRAY`", "index$": 11 }, { "active": true, "name": "surname", "req": false, "short": "Surname of the laureate", "type": "`$STRING`", "index$": 12 }], "id": { "field": "id", "name": "id" }, "name": "laureate", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "born_city", "orig": "born_city", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "query", "name": "born_country", "orig": "born_country", "reqd": false, "type": "`$STRING`", "index$": 1 }, { "active": true, "kind": "query", "name": "died_city", "orig": "died_city", "reqd": false, "type": "`$STRING`", "index$": 2 }, { "active": true, "kind": "query", "name": "died_country", "orig": "died_country", "reqd": false, "type": "`$STRING`", "index$": 3 }, { "active": true, "kind": "query", "name": "firstname", "orig": "firstname", "reqd": false, "type": "`$STRING`", "index$": 4 }, { "active": true, "kind": "query", "name": "gender", "orig": "gender", "reqd": false, "type": "`$STRING`", "index$": 5 }, { "active": true, "kind": "query", "name": "id", "orig": "id", "reqd": false, "type": "`$INTEGER`", "index$": 6 }, { "active": true, "kind": "query", "name": "surname", "orig": "surname", "reqd": false, "type": "`$STRING`", "index$": 7 }] }, "contract": { "id": "GET /laureate.json", "json": "{\"operationId\":\"getLaureates\",\"parameters\":[{\"description\":\"Filter laureates by ID\",\"in\":\"query\",\"name\":\"id\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Filter laureates by first name\",\"in\":\"query\",\"name\":\"firstname\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter laureates by surname\",\"in\":\"query\",\"name\":\"surname\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter laureates by gender\",\"in\":\"query\",\"name\":\"gender\",\"required\":false,\"schema\":{\"enum\":[\"male\",\"female\",\"org\"],\"type\":\"string\"}},{\"description\":\"Filter laureates by birth country\",\"in\":\"query\",\"name\":\"bornCountry\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter laureates by country of death\",\"in\":\"query\",\"name\":\"diedCountry\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter laureates by birth city\",\"in\":\"query\",\"name\":\"bornCity\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Filter laureates by city of death\",\"in\":\"query\",\"name\":\"diedCity\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"laureates\":[{\"born\":\"1931-08-08\",\"bornCity\":\"Colchester\",\"bornCountry\":\"United Kingdom\",\"bornCountryCode\":\"GB\",\"firstname\":\"Roger\",\"gender\":\"male\",\"id\":\"988\",\"prizes\":[{\"affiliations\":[{\"city\":\"Oxford\",\"country\":\"United Kingdom\",\"name\":\"University of Oxford\"}],\"category\":\"physics\",\"motivation\":\"for the discovery that black hole formation is a robust prediction of the general theory of relativity\",\"share\":\"2\",\"year\":\"2020\"}],\"surname\":\"Penrose\"}]},\"schema\":{\"properties\":{\"laureates\":{\"items\":{\"properties\":{\"born\":{\"description\":\"Birth date\",\"type\":\"string\"},\"bornCity\":{\"description\":\"City of birth\",\"type\":\"string\"},\"bornCountry\":{\"description\":\"Country of birth\",\"type\":\"string\"},\"bornCountryCode\":{\"description\":\"Country code of birth country\",\"type\":\"string\"},\"died\":{\"description\":\"Death date\",\"type\":\"string\"},\"diedCity\":{\"description\":\"City of death\",\"type\":\"string\"},\"diedCountry\":{\"description\":\"Country of death\",\"type\":\"string\"},\"diedCountryCode\":{\"description\":\"Country code of death country\",\"type\":\"string\"},\"firstname\":{\"description\":\"First name of the laureate\",\"type\":\"string\"},\"gender\":{\"description\":\"Gender of the laureate\",\"type\":\"string\"},\"id\":{\"description\":\"Laureate ID\",\"type\":\"string\"},\"prizes\":{\"items\":{\"properties\":{\"affiliations\":{\"items\":{\"properties\":{\"city\":{\"description\":\"City of the affiliation\",\"type\":\"string\"},\"country\":{\"description\":\"Country of the affiliation\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the affiliation\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"category\":{\"description\":\"Category of the Nobel Prize\",\"type\":\"string\"},\"motivation\":{\"description\":\"Motivation for the award\",\"type\":\"string\"},\"share\":{\"description\":\"Share of the prize\",\"type\":\"string\"},\"year\":{\"description\":\"Year the prize was awarded\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"surname\":{\"description\":\"Surname of the laureate\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with laureate data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/laureate.json", "segments": [{ "lit": "laureate.json" }], "select": { "exist": ["born_city", "born_country", "died_city", "died_country", "firstname", "gender", "id", "surname"] }, "transform": { "req": "`reqdata`", "res": "`body.laureates`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "laureate", "name__orig": "laureate", "Name": "Laureate", "name_": "laureate", "name-": "laureate", "NAME": "LAUREATE", "index$": 0 }, { "active": true, "entity": "laureate", "key$": "BasicLaureateFlow", "kind": "basic", "name": "BasicLaureateFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "laureate_ref01" } }], "index$": 0 }] }, 'Laureate');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['NOBEL_PRIZE_TEST_LAUREATE_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'NOBEL_PRIZE_TEST_LAUREATE_ENTID': idmap,
         'NOBEL_PRIZE_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['NOBEL_PRIZE_TEST_LAUREATE_ENTID'];
     const live = 'TRUE' === env.NOBEL_PRIZE_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['NOBEL_PRIZE_TEST_LAUREATE_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.NobelPrizeSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.NOBEL_PRIZE_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.NOBEL_PRIZE_TEST_LIVE;
         for (const op of ['list']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'prize.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'prize.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set NOBEL_PRIZE_TEST_PRIZE_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "category", "req": false, "short": "Category of the Nobel Prize", "type": "`$STRING`", "index$": 0 }, { "active": true, "name": "laureates", "req": false, "type": "`$ARRAY`", "index$": 1 }, { "active": true, "name": "overallMotivation", "req": false, "short": "Overall motivation for the prize", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "year", "req": false, "short": "Year the prize was awarded", "type": "`$STRING`", "index$": 3 }], "name": "prize", "op": { "list": { "input": "data", "name": "list", "points": [{ "active": true, "args": { "query": [{ "active": true, "kind": "query", "name": "category", "orig": "category", "reqd": false, "type": "`$STRING`", "index$": 0 }, { "active": true, "kind": "query", "name": "year", "orig": "year", "reqd": false, "type": "`$INTEGER`", "index$": 1 }] }, "contract": { "id": "GET /prize.json", "json": "{\"operationId\":\"getPrizes\",\"parameters\":[{\"description\":\"Filter prizes by year (e.g., 2020)\",\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"minimum\":1901,\"type\":\"integer\"}},{\"description\":\"Filter prizes by category\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"physics\",\"chemistry\",\"medicine\",\"literature\",\"peace\",\"economics\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"prizes\":[{\"category\":\"physics\",\"laureates\":[{\"firstname\":\"Roger\",\"id\":\"988\",\"motivation\":\"for the discovery that black hole formation is a robust prediction of the general theory of relativity\",\"share\":\"2\",\"surname\":\"Penrose\"}],\"year\":\"2020\"}]},\"schema\":{\"properties\":{\"prizes\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the Nobel Prize\",\"type\":\"string\"},\"laureates\":{\"items\":{\"properties\":{\"firstname\":{\"description\":\"First name of the laureate\",\"type\":\"string\"},\"id\":{\"description\":\"Laureate ID\",\"type\":\"string\"},\"motivation\":{\"description\":\"Motivation for the award\",\"type\":\"string\"},\"share\":{\"description\":\"Share of the prize\",\"type\":\"string\"},\"surname\":{\"description\":\"Surname of the laureate\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"overallMotivation\":{\"description\":\"Overall motivation for the prize\",\"type\":\"string\"},\"year\":{\"description\":\"Year the prize was awarded\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with prize data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/prize.json", "segments": [{ "lit": "prize.json" }], "select": { "exist": ["category", "year"] }, "transform": { "req": "`reqdata`", "res": "`body.prizes`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "prize", "name__orig": "prize", "Name": "Prize", "name_": "prize", "name-": "prize", "NAME": "PRIZE", "index$": 1 }, { "active": true, "entity": "prize", "key$": "BasicPrizeFlow", "kind": "basic", "name": "BasicPrizeFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": {}, "match": {}, "op": "list", "spec": [], "valid": [{ "apply": "ItemExists", "def": { "ref": "prize_ref01" } }], "index$": 0 }] }, 'Prize');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['NOBEL_PRIZE_TEST_PRIZE_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'NOBEL_PRIZE_TEST_PRIZE_ENTID': idmap,
         'NOBEL_PRIZE_TEST_LIVE': 'FALSE',
@@ -114,7 +106,13 @@ function basicSetup(extra) {
     });
     idmap = env['NOBEL_PRIZE_TEST_PRIZE_ENTID'];
     const live = 'TRUE' === env.NOBEL_PRIZE_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['NOBEL_PRIZE_TEST_PRIZE_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.NobelPrizeSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -125,7 +123,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -137,7 +136,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.NOBEL_PRIZE_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

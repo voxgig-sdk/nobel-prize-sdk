@@ -54,6 +54,12 @@ main: kit: entity: prize: {
               }
             ]
           }
+          contract: {
+            id: "GET /prize.json"
+            json: "{\"operationId\":\"getPrizes\",\"parameters\":[{\"description\":\"Filter prizes by year (e.g., 2020)\",\"in\":\"query\",\"name\":\"year\",\"required\":false,\"schema\":{\"minimum\":1901,\"type\":\"integer\"}},{\"description\":\"Filter prizes by category\",\"in\":\"query\",\"name\":\"category\",\"required\":false,\"schema\":{\"enum\":[\"physics\",\"chemistry\",\"medicine\",\"literature\",\"peace\",\"economics\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"prizes\":[{\"category\":\"physics\",\"laureates\":[{\"firstname\":\"Roger\",\"id\":\"988\",\"motivation\":\"for the discovery that black hole formation is a robust prediction of the general theory of relativity\",\"share\":\"2\",\"surname\":\"Penrose\"}],\"year\":\"2020\"}]},\"schema\":{\"properties\":{\"prizes\":{\"items\":{\"properties\":{\"category\":{\"description\":\"Category of the Nobel Prize\",\"type\":\"string\"},\"laureates\":{\"items\":{\"properties\":{\"firstname\":{\"description\":\"First name of the laureate\",\"type\":\"string\"},\"id\":{\"description\":\"Laureate ID\",\"type\":\"string\"},\"motivation\":{\"description\":\"Motivation for the award\",\"type\":\"string\"},\"share\":{\"description\":\"Share of the prize\",\"type\":\"string\"},\"surname\":{\"description\":\"Surname of the laureate\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"overallMotivation\":{\"description\":\"Overall motivation for the prize\",\"type\":\"string\"},\"year\":{\"description\":\"Year the prize was awarded\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with prize data\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/prize.json"
           segments: [
