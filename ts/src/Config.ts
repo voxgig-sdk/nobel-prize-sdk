@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      laureate: {
-      },
-
-      prize: {
-      },
-
+        laureate: {
+        },
+  
+        prize: {
+        },
+  
     }
   }
 

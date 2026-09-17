@@ -1,4 +1,4 @@
 # Entity Models
 
-@"laureate.aon"
-@"prize.aon"
+@"./laureate.aon"
+@"./prize.aon"

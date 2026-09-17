@@ -105,12 +105,12 @@ local results, err = client:Laureate():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/nobel-prize-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
-| Python | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
-| PHP | `voxgig-sdk/nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
+| TypeScript | `@voxgig-sdk/nobel-prize-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/tags) |
+| Python | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/tags) |
+| PHP | `voxgig-sdk/nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/nobel-prize-sdk/go` | `go get github.com/voxgig-sdk/nobel-prize-sdk/go@latest` |
-| Ruby | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
-| Lua | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/releases) |
+| Ruby | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/tags) |
+| Lua | `voxgig-sdk-nobel-prize` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nobel-prize-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/nobel-prize-sdk/go-cli` | `go install github.com/voxgig-sdk/nobel-prize-sdk/go-cli/cmd/nobel-prize@latest` |
 | Go MCP server | `github.com/voxgig-sdk/nobel-prize-sdk/go-mcp` | `go get github.com/voxgig-sdk/nobel-prize-sdk/go-mcp@latest` |
 
